@@ -1,0 +1,5 @@
+[run]
+source = polytorch
+
+[report]
+precision = 2
