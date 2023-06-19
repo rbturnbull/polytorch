@@ -3,6 +3,7 @@
 from torch import nn
 from dataclasses import dataclass
 
+from .enums import ContinuousDataLossType
 
 class PolyData():
     def create_module(self, embedding_size:int):
@@ -32,7 +33,10 @@ class OrdinalData(CategoricalData):
         return OrdinalEmbedding(self.category_count, embedding_size)
 
 
+@dataclass
 class ContinuousData(PolyData):
+    loss_type:ContinuousDataLossType = ContinuousDataLossType.SMOOTH_L1_LOSS
+    
     def create_module(self, embedding_size:int):
         from .embedding import ContinuousEmbedding
         return ContinuousEmbedding(embedding_size)

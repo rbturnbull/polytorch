@@ -2,7 +2,7 @@ from torch import nn
 from typing import List
 
 from .data import PolyData
-from .util import total_size
+from .util import total_size, split_tensor
 
 
 class PolyLayerError(RuntimeError):
@@ -20,6 +20,10 @@ class PolyLayerMixin():
             )
 
         super().__init__(out_features=total_size(self.output_types), **kwargs)
+
+    def forward(self, *inputs):
+        outputs = super().forward(*inputs)
+        return split_tensor(outputs, self.output_types, feature_axis=-1)
 
 
 class PolyLinear(PolyLayerMixin, nn.Linear):

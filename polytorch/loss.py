@@ -31,16 +31,7 @@ class PolyLoss(nn.Module):
                 # prediction = prediction.permute(0, 2, 1, 3, 4) # softmax over axis 1
                 target_loss = F.cross_entropy(prediction, target.long(), reduction="none")
             elif isinstance(data_type, ContinuousData):
-                if data_type.loss_type.lower() == "l1":
-                    loss_func = F.l1_loss
-                elif data_type.loss_type.lower() == "msa":
-                    loss_func = F.mse_loss
-                else:
-                    # smooth l1 loss default
-                    loss_func = F.smooth_l1_loss
-                    
-                target_loss = loss_func(prediction, target, reduction="none")
-
+                target_loss = data_type.loss_type(prediction, target, reduction="none")
             elif isinstance(data_type, CategoricalData):
                 # TODO Focal Loss
                 # prediction = prediction.permute(0, 2, 1, 3, 4) # softmax over axis 1
