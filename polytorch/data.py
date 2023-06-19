@@ -8,6 +8,9 @@ class PolyData():
     def create_module(self, embedding_size:int):
         raise NotImplementedError(f'Use either CategoricalData, OrdinalData or ContinuousData')
 
+    def size(self) -> int:
+        raise NotImplementedError(f'Use either CategoricalData, OrdinalData or ContinuousData')
+    
 
 @dataclass
 class CategoricalData(PolyData):
@@ -15,6 +18,9 @@ class CategoricalData(PolyData):
 
     def create_module(self, embedding_size:int):
         return nn.Embedding(self.category_count, embedding_size)
+
+    def size(self) -> int:
+        return self.category_count
 
 
 @dataclass
@@ -30,3 +36,6 @@ class ContinuousData(PolyData):
     def create_module(self, embedding_size:int):
         from .embedding import ContinuousEmbedding
         return ContinuousEmbedding(embedding_size)
+
+    def size(self) -> int:
+        return 1
