@@ -28,7 +28,7 @@ class PolyLoss(nn.Module):
         for prediction, target, data_type in zip(predictions, targets, self.data_types):
             if isinstance(data_type, OrdinalData):
                 # TODO Earth Mover Loss
-                prediction = prediction.permute(0, 2, 1, 3, 4) # softmax over axis 1
+                # prediction = prediction.permute(0, 2, 1, 3, 4) # softmax over axis 1
                 target_loss = F.cross_entropy(prediction, target.long(), reduction="none")
             elif isinstance(data_type, ContinuousData):
                 if data_type.loss_type.lower() == "l1":
@@ -43,7 +43,7 @@ class PolyLoss(nn.Module):
 
             elif isinstance(data_type, CategoricalData):
                 # TODO Focal Loss
-                prediction = prediction.permute(0, 2, 1, 3, 4) # softmax over axis 1
+                # prediction = prediction.permute(0, 2, 1, 3, 4) # softmax over axis 1
                 target_loss = F.cross_entropy(
                     prediction, 
                     target.long(), 

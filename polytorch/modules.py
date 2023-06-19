@@ -4,6 +4,7 @@ from typing import List
 from .data import PolyData
 from .util import total_size
 
+
 class PolyLayerError(RuntimeError):
     pass
 
