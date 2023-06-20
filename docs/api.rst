@@ -2,32 +2,53 @@
 API Reference
 =======================
 
+
+Enums
+=======================
+
 .. automodule:: polytorch.enums
     :members:
-    :inherited-members:
+    
 
+Data
+=======================
 
 .. automodule:: polytorch.data
     :members:
-    :inherited-members:
+    
 
+Embedding
+=======================
 
 .. automodule:: polytorch.embedding
     :members:
-    :inherited-members:
+    
 
+Modules
+=======================
 
 .. automodule:: polytorch.modules
     :members:
-    :inherited-members:
+    
 
+Loss
+=======================
 
 .. automodule:: polytorch.loss
     :members:
-    :inherited-members:
+    
 
+Metrics
+=======================
+
+.. automodule:: polytorch.metrics
+    :members:
+    
+
+Util
+=======================
 
 .. automodule:: polytorch.util
     :members:
-    :inherited-members:
+    
 
