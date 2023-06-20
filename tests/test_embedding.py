@@ -72,7 +72,6 @@ def test_continuous_embedding_simple():
         print(i, "continuous[i]/continuous[0]", continuous[i]/continuous[0])
         torch.testing.assert_close((embedded[i]/embedded[0]).min(), continuous[i]/continuous[0])
         torch.testing.assert_close((embedded[i]/embedded[0]).max(), continuous[i]/continuous[0])
-        assert False
     
 
 def test_continuous_embedding_complex():
