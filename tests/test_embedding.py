@@ -17,6 +17,17 @@ def test_ordinal_embedding_simple():
     assert embedded.shape == (batch_size, embedding_size)
     for i in range(1, embedding_size):
         if ordinal[i-1] != 0:
+            print("-------------------")
+            print(i, "embedding.weight", embedding.weight)
+            print(i, "embedding.weight * ordinal[i-1]", embedding.weight * ordinal[i-1])
+            print(i, "embedding.weight * ordinal[i]", embedding.weight * ordinal[i])
+            print(i, "ordinal[i-1]", ordinal[i-1])
+            print(i, "ordinal[i]", ordinal[i])
+            print(i, "embedded[i-1]", embedded[i-1])
+            print(i, "embedded[i]", embedded[i])
+            print(i, "embedded[i]/embedded[i-1]", embedded[i]/embedded[i-1])
+            print(i, "ordinal[i]/ordinal[i-1]", ordinal[i]/ordinal[i-1])
+
             torch.testing.assert_close((embedded[i]/embedded[i-1]).min(), ordinal[i]/ordinal[i-1])
             torch.testing.assert_close((embedded[i]/embedded[i-1]).max(), ordinal[i]/ordinal[i-1])
 
