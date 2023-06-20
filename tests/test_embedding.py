@@ -60,6 +60,13 @@ def test_continuous_embedding_simple():
     assert embedded.shape == (batch_size, embedding_size)
 
     for i in range(1, embedding_size):
+        print("-------------------")
+        print(i, "continuous[0]", continuous[0])
+        print(i, "continuous[i]", continuous[i])
+        print(i, "embedded[0]", embedded[0])
+        print(i, "embedded[i]", embedded[i])
+        print(i, "embedded[i]/embedded[0]", embedded[i]/embedded[0])
+        print(i, "continuous[i]/continuous[0]", continuous[i]/continuous[0])
         torch.testing.assert_close((embedded[i]/embedded[0]).min(), continuous[i]/continuous[0])
         torch.testing.assert_close((embedded[i]/embedded[0]).max(), continuous[i]/continuous[0])
     
