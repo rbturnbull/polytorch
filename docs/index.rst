@@ -1,9 +1,9 @@
-.. My Awesome App documentation master file, created by
+.. PolyTorch documentation master file, created by
    sphinx-quickstart on Tue Mar 15 16:05:31 2022.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to My Awesome App's documentation!
+Welcome to PolyTorch's documentation!
 ===========================================================
 
 .. include:: ../README.rst
