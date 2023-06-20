@@ -18,8 +18,8 @@ jobs:
         python-version: ${{ matrix.python-version }}
         cache: 'poetry'
     - run: |
-      poetry install
-      python3 -m pip  install torch  --extra-index-url https://download.pytorch.org/whl/cpu
+        poetry install
+        python3 -m pip  install torch  --extra-index-url https://download.pytorch.org/whl/cpu
     - name: Testing
       run: |
         poetry run pytest
