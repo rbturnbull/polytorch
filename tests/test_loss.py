@@ -33,6 +33,27 @@ def test_loss_categorical():
     assert loss.item() > 4.0
 
 
+def test_loss_categorical_complex():
+    batch_size = 5
+    category_count = batch_size
+    timesteps = 3
+    height = width = 128
+    
+    prediction = torch.zeros((batch_size, timesteps, category_count, height, width))
+    target = torch.zeros( (batch_size, timesteps, height, width), dtype=int)
+    for i in range(batch_size):
+        prediction[i, :, i, :, :] = 10.0
+        target[i, :, :, :] = i
+
+    loss_fn = PolyLoss([CategoricalData(category_count)], feature_axis=2)
+    loss = loss_fn(prediction, target)
+    assert loss.item() < 0.01
+
+    # change targets
+    loss = loss_fn(prediction, target % 3)
+    assert loss.item() > 4.0
+
+
 def test_loss_ordinal():
     batch_size = 5
     category_count = batch_size
