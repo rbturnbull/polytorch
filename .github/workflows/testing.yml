@@ -11,7 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Install poetry
-      run: pipx install poetry==1.1.7
+      run: pipx install poetry
     - name: Initialise Python ${{ matrix.python-version }}
       uses: actions/setup-python@v3
       with:
