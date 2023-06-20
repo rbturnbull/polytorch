@@ -4,7 +4,7 @@ from torch import nn
 import torch.nn.functional as F
 
 from .data import OrdinalData, ContinuousData, CategoricalData, PolyData
-from .util import split_tensor
+from .util import split_tensor, permute_feature_axis
 
 class PolyLoss(nn.Module):
     def __init__(
@@ -16,23 +16,6 @@ class PolyLoss(nn.Module):
         super().__init__(**kwargs)
         self.data_types = data_types   
         self.feature_axis = feature_axis 
-
-    def permute_to_feature_axis(self, prediction:torch.Tensor, new_axis:int=1) -> torch.Tensor:
-        """
-        Changes the shape of the predictions tensor so that the feature axis is 
-
-        Args:
-            predictions (torch.Tensor): The predictions tensor.
-            new_axis (int): The desired index of the feature axis.
-
-        Returns:
-            torch.Tensor: The predictions tensor with the feature axis at the specified index.
-        """
-        if self.feature_axis % len(prediction.shape) != new_axis:
-            axes = list(range(len(prediction.shape)))
-            axes.insert(new_axis, axes.pop(self.feature_axis))
-            return prediction.permute(*axes)
-        return prediction
 
     def forward(self, predictions, *targets):
         if not isinstance(predictions, (tuple, list)):
@@ -49,7 +32,7 @@ class PolyLoss(nn.Module):
                 # TODO Focal Loss
                 # TODO Earth mover loss (Wasserstein distance) for ordinal data
                 # cross-entropy over axis 1
-                prediction = self.permute_to_feature_axis(prediction, new_axis=1)
+                prediction = permute_feature_axis(prediction, old_axis=self.feature_axis, new_axis=1)
                 target_loss = F.cross_entropy(
                     prediction, 
                     target.long(), 

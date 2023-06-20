@@ -144,3 +144,26 @@ def test_polyembedding_all():
     assert x.shape == (batch_size, timesteps, height, width, embedding_size)
 
 
+
+def test_polyembedding_feature_axis():
+    embedding_size = 8
+    batch_size = 10
+    timesteps = 3
+    height = width = 128
+    ordinal_count = 7
+    category_count = 5
+
+    embedding = PolyEmbedding(embedding_size=embedding_size, feature_axis=2, input_types=[
+        OrdinalData(category_count=ordinal_count),
+        ContinuousData(),
+        CategoricalData(category_count=category_count),  
+    ])
+    
+    size = (batch_size, timesteps, height, width)
+    ordinal = torch.randint( low=0, high=ordinal_count, size=size )
+    categorical = torch.randint( low=0, high=category_count, size=size )    
+    continuous = torch.randn( size )
+
+    x = embedding(ordinal, continuous, categorical)
+    assert x.shape == (batch_size, timesteps, embedding_size, height, width)
+

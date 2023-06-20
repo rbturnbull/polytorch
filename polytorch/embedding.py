@@ -8,6 +8,7 @@ from torch.nn.parameter import Parameter
 import torch.nn.functional as F
 
 from .data import PolyData
+from .util import permute_feature_axis
 
 class ContinuousEmbedding(nn.Module):
     def __init__(
@@ -79,7 +80,8 @@ class PolyEmbedding(nn.Module):
     def __init__(
         self,
         input_types:List[PolyData],
-        embedding_size:int,        
+        embedding_size:int,  
+        feature_axis:int=-1,      
         **kwargs,
     ):
         super().__init__(**kwargs)    
@@ -88,6 +90,7 @@ class PolyEmbedding(nn.Module):
         self.embedding_modules = nn.ModuleList([
             input.create_module(embedding_size) for input in input_types
         ])
+        self.feature_axis = feature_axis
 
     def forward(self, *inputs):
         shape = inputs[0].shape + (self.embedding_size,)
@@ -96,6 +99,6 @@ class PolyEmbedding(nn.Module):
         for input, module in zip(inputs, self.embedding_modules):
             embedded += module(input)
 
-        return embedded
+        return permute_feature_axis(embedded, old_axis=-1, new_axis=self.feature_axis)
 
 

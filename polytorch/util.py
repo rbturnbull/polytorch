@@ -41,3 +41,22 @@ def split_tensor(tensor:Tensor, data_types:List[PolyData], feature_axis:int=-1) 
     assert current_index == tensor.shape[feature_axis]
 
     return tuple(split_tensors)
+
+
+def permute_feature_axis(tensor:Tensor, old_axis:int, new_axis:int) -> Tensor:
+    """
+    Changes the shape of a tensor so that the feature axis is in a new axis.
+
+    Args:
+        tensor (torch.Tensor): The tensor to permute.
+        new_axis (int): The desired index of the feature axis.
+
+    Returns:
+        torch.Tensor: The predictions tensor with the feature axis at the specified index.
+    """
+    axes_count = len(tensor.shape)
+    if old_axis % axes_count != new_axis % axes_count:
+        axes = list(range(axes_count))
+        axes.insert(new_axis, axes.pop(old_axis))
+        return tensor.permute(*axes)
+    return tensor
