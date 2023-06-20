@@ -35,7 +35,7 @@ class PolyLoss(nn.Module):
         return prediction
 
     def forward(self, predictions, *targets):
-        if not isinstance(predictions, tuple):
+        if not isinstance(predictions, (tuple, list)):
             predictions = split_tensor(predictions, self.data_types, feature_axis=self.feature_axis)
 
         assert len(predictions) == len(targets) == len(self.data_types)
