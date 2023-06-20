@@ -78,15 +78,15 @@ class OrdinalEmbedding(ContinuousEmbedding):
 class PolyEmbedding(nn.Module):
     def __init__(
         self,
-        inputs:List[PolyData],
+        input_types:List[PolyData],
         embedding_size:int,        
         **kwargs,
     ):
         super().__init__(**kwargs)    
-        self.inputs = inputs
+        self.input_types = input_types
         self.embedding_size = embedding_size
         self.embedding_modules = nn.ModuleList([
-            input.create_module(embedding_size) for input in inputs
+            input.create_module(embedding_size) for input in input_types
         ])
 
     def forward(self, *inputs):

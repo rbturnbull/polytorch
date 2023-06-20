@@ -42,7 +42,7 @@ def test_polyembedding_ordinal():
     height = width = 128
     category_count = 5
 
-    embedding = PolyEmbedding(embedding_size=embedding_size, inputs=[OrdinalData(category_count=category_count)])
+    embedding = PolyEmbedding(embedding_size=embedding_size, input_types=[OrdinalData(category_count=category_count)])
     ordinal = torch.randint( low=0, high=category_count, size=(batch_size, timesteps, height, width) )
 
     x = embedding(ordinal)
@@ -98,7 +98,7 @@ def test_polyembedding_continuous():
     embedding_size = 8
     batch_size = 10
 
-    embedding = PolyEmbedding(embedding_size=embedding_size, inputs=[ContinuousData()])
+    embedding = PolyEmbedding(embedding_size=embedding_size, input_types=[ContinuousData()])
     continuous = torch.randn( (batch_size) )
 
     embedded = embedding(continuous)
@@ -115,7 +115,7 @@ def test_polyembedding_categorical_simple():
     category_count = 10
     
     categorical = torch.randint( low=0, high=category_count, size=(batch_size,) )
-    embedding = PolyEmbedding(embedding_size=embedding_size, inputs=[CategoricalData(category_count=category_count)])
+    embedding = PolyEmbedding(embedding_size=embedding_size, input_types=[CategoricalData(category_count=category_count)])
 
     embedded = embedding(categorical)
     assert embedded.shape == (batch_size, embedding_size)
@@ -129,7 +129,7 @@ def test_polyembedding_all():
     ordinal_count = 7
     category_count = 5
 
-    embedding = PolyEmbedding(embedding_size=embedding_size, inputs=[
+    embedding = PolyEmbedding(embedding_size=embedding_size, input_types=[
         OrdinalData(category_count=ordinal_count),
         ContinuousData(),
         CategoricalData(category_count=category_count),  
