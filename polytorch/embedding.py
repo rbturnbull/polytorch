@@ -40,6 +40,7 @@ class ContinuousEmbedding(nn.Module):
 
     def reset_parameters(self) -> None:
         torch.nn.init.normal_(self.weight)
+        torch.nn.init.constant_(self.bias, 0.0)
 
 
 class OrdinalEmbedding(ContinuousEmbedding):
