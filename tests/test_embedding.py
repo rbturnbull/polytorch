@@ -61,6 +61,9 @@ def test_continuous_embedding_simple():
 
     for i in range(1, embedding_size):
         print("-------------------")
+        print(i, "embedding.weight", embedding.weight)
+        print(i, "embedding.weight * continuous[0]", embedding.weight * continuous[0])
+        print(i, "embedding.weight * continuous[i]", embedding.weight * continuous[i])
         print(i, "continuous[0]", continuous[0])
         print(i, "continuous[i]", continuous[i])
         print(i, "embedded[0]", embedded[0])
@@ -69,6 +72,7 @@ def test_continuous_embedding_simple():
         print(i, "continuous[i]/continuous[0]", continuous[i]/continuous[0])
         torch.testing.assert_close((embedded[i]/embedded[0]).min(), continuous[i]/continuous[0])
         torch.testing.assert_close((embedded[i]/embedded[0]).max(), continuous[i]/continuous[0])
+        assert False
     
 
 def test_continuous_embedding_complex():
