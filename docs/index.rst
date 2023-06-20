@@ -18,7 +18,6 @@ Embeddings and loss functions for different data types.
 
    quickstart
    api
-   cli
    credits
 
 Indices and tables
