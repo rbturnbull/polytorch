@@ -1,6 +1,6 @@
 import torch
-
-from polytorch.modules import PolyLinear
+import pytest
+from polytorch.modules import PolyLinear, PolyLayerError
 from polytorch import CategoricalData, ContinuousData, OrdinalData
 
 
@@ -33,3 +33,8 @@ def test_linear_multi():
     assert result[2].shape == (batch_size, 5)
 
     
+def test_linear_out_features():
+    input_size = 8
+
+    with pytest.raises(PolyLayerError):
+        PolyLinear(in_features=input_size, out_features=13, output_types=[ContinuousData()])
