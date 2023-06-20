@@ -32,12 +32,3 @@ class PolyLinear(PolyLayerMixin, nn.Linear):
 
     The `out_features` value is set internally from root.layer_size and cannot be given as an argument.
     """
-
-
-class PolyLazyLinear(PolyLayerMixin, nn.LazyLinear):
-    """
-    Creates a lazy linear layer designed to be the final layer in a neural network model that produces unnormalized scores given to PolyLoss.
-
-    The `out_features` value is set internally from root.layer_size and cannot be given as an argument.
-    The `in_features` will be inferred from the previous layer at runtime.
-    """
