@@ -1,5 +1,3 @@
-# -*- coding: future_typing -*-
-
 from torch import nn
 from dataclasses import dataclass
 
@@ -36,7 +34,7 @@ class OrdinalData(CategoricalData):
 @dataclass
 class ContinuousData(PolyData):
     loss_type:ContinuousDataLossType = ContinuousDataLossType.SMOOTH_L1_LOSS
-    
+
     def create_module(self, embedding_size:int):
         from .embedding import ContinuousEmbedding
         return ContinuousEmbedding(embedding_size)

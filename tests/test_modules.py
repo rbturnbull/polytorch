@@ -16,6 +16,7 @@ def test_linear():
     len(result) == 1
     assert result[0].shape == (batch_size, 1)
 
+
 def test_linear_multi():
     batch_size = 5
     input_size = 8
