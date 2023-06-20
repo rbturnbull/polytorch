@@ -60,6 +60,15 @@ jobs:
       uses: actions/upload-pages-artifact@v1
       with:
         path: gh-pages
+    - name: Create Coverage Badge
+      uses: schneegans/dynamic-badges-action@v1.1.0
+      with:
+        auth: ${{ secrets.GIST_SECRET }}
+        gistID: f84ac74436887cd42d77fbe2246d1f57
+        filename: coverage-badge.json
+        label: coverage
+        message: ${{ env.COVERAGE }}
+        color: green
 
   # Deployment job
   deploy:
