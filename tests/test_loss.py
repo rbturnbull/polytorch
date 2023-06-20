@@ -121,3 +121,22 @@ def test_loss_continuous_smooth_l1():
     torch.testing.assert_close(loss.item(), 0.005)
 
 
+def test_loss_continuous_complex():
+    batch_size = 5
+    timesteps = 3
+    height = width = 128
+
+    prediction = torch.randn((batch_size, timesteps, 1, height, width))
+    target = prediction.squeeze()
+
+    loss_fn = PolyLoss([ContinuousData(loss_type=ContinuousDataLossType.L1_LOSS)], feature_axis=2)
+    loss = loss_fn(prediction, target)
+    torch.testing.assert_close(loss.item(), 0.0)
+
+    loss = loss_fn(prediction+0.1, target)
+    torch.testing.assert_close(loss.item(), 0.1)
+
+    loss = loss_fn(prediction-0.1, target)
+    torch.testing.assert_close(loss.item(), 0.1)
+
+

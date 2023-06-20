@@ -27,6 +27,13 @@ class PolyLoss(nn.Module):
 
         for prediction, target, data_type in zip(predictions, targets, self.data_types):
             if isinstance(data_type, ContinuousData):
+                # Squeeze feature axis if necessary
+                if (
+                    len(prediction.shape) == len(target.shape) + 1 and 
+                    prediction.shape[:self.feature_axis] + prediction.shape[self.feature_axis+1:] == target.shape
+                ):
+                    prediction = prediction.squeeze()
+                
                 target_loss = data_type.loss_type(prediction, target, reduction="none")
             elif isinstance(data_type, CategoricalData) or isinstance(data_type, OrdinalData):
                 # TODO Focal Loss
