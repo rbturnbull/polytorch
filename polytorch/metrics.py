@@ -1,6 +1,8 @@
 import torch
 import torch.nn.functional as F
 
+from .util import squeeze_prediction
+
 
 def get_predictions_target_for_index(predictions, *targets, data_index=None, feature_axis=-1):
     if not isinstance(predictions, (tuple, list)):
@@ -17,6 +19,7 @@ def get_predictions_target_for_index(predictions, *targets, data_index=None, fea
 
 def function_metric(predictions, *targets, data_index=None, feature_axis=-1, function=None):
     my_predictions, my_targets = get_predictions_target_for_index(predictions, *targets, data_index=data_index, feature_axis=feature_axis)
+    my_predictions = squeeze_prediction(my_predictions, my_targets, feature_axis)
     return function(my_predictions, my_targets)
 
 

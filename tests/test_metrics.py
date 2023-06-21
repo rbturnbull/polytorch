@@ -85,3 +85,19 @@ def test_metric_smooth_l1():
     torch.testing.assert_close(result.item(), 0.005)
 
 
+def test_metric_smooth_l1_squeeze():
+    batch_size = 5
+
+    prediction = torch.randn((batch_size, 1))
+    target = prediction.squeeze()
+
+    result = smooth_l1(prediction, target, data_index=0, feature_axis=-1)
+    torch.testing.assert_close(result.item(), 0.0)
+
+    result = smooth_l1(prediction+.1, target, data_index=0, feature_axis=-1)
+    torch.testing.assert_close(result.item(), 0.005)
+
+    result = smooth_l1(prediction+.1, target, data_index=0, feature_axis=-1)
+    torch.testing.assert_close(result.item(), 0.005)
+
+

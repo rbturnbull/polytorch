@@ -66,6 +66,7 @@ def squeeze_prediction(prediction:Tensor, target:Tensor, feature_axis:int):
     """
     Squeeze feature axis if necessary
     """
+    feature_axis = feature_axis % len(prediction.shape)
     if (
         len(prediction.shape) == len(target.shape) + 1 and 
         prediction.shape[:feature_axis] + prediction.shape[feature_axis+1:] == target.shape
