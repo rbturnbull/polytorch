@@ -60,3 +60,15 @@ def permute_feature_axis(tensor:Tensor, old_axis:int, new_axis:int) -> Tensor:
         axes.insert(new_axis, axes.pop(old_axis))
         return tensor.permute(*axes)
     return tensor
+
+
+def squeeze_prediction(prediction:Tensor, target:Tensor, feature_axis:int):
+    """
+    Squeeze feature axis if necessary
+    """
+    if (
+        len(prediction.shape) == len(target.shape) + 1 and 
+        prediction.shape[:feature_axis] + prediction.shape[feature_axis+1:] == target.shape
+    ):
+        prediction = prediction.squeeze(feature_axis)
+    return prediction

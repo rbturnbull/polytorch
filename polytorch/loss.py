@@ -4,7 +4,7 @@ from torch import nn
 import torch.nn.functional as F
 
 from .data import OrdinalData, ContinuousData, CategoricalData, PolyData
-from .util import split_tensor, permute_feature_axis
+from .util import split_tensor, permute_feature_axis, squeeze_prediction
 
 class PolyLoss(nn.Module):
     def __init__(
@@ -24,16 +24,9 @@ class PolyLoss(nn.Module):
         assert len(predictions) == len(targets) == len(self.data_types)
 
         loss = 0.0
-        print('---')
         for prediction, target, data_type in zip(predictions, targets, self.data_types):
             if isinstance(data_type, ContinuousData):
-                # Squeeze feature axis if necessary
-                if (
-                    len(prediction.shape) == len(target.shape) + 1 and 
-                    prediction.shape[:self.feature_axis] + prediction.shape[self.feature_axis+1:] == target.shape
-                ):
-                    prediction = prediction.squeeze(self.feature_axis)
-                
+                prediction = squeeze_prediction(prediction, target, self.feature_axis)
                 target_loss = data_type.loss_type(prediction, target, reduction="none")
             elif isinstance(data_type, CategoricalData) or isinstance(data_type, OrdinalData):
                 # TODO Focal Loss
