@@ -24,7 +24,7 @@ class PolyLoss(nn.Module):
         assert len(predictions) == len(targets) == len(self.data_types)
 
         loss = 0.0
-
+        print('---')
         for prediction, target, data_type in zip(predictions, targets, self.data_types):
             if isinstance(data_type, ContinuousData):
                 # Squeeze feature axis if necessary
@@ -32,7 +32,7 @@ class PolyLoss(nn.Module):
                     len(prediction.shape) == len(target.shape) + 1 and 
                     prediction.shape[:self.feature_axis] + prediction.shape[self.feature_axis+1:] == target.shape
                 ):
-                    prediction = prediction.squeeze()
+                    prediction = prediction.squeeze(self.feature_axis)
                 
                 target_loss = data_type.loss_type(prediction, target, reduction="none")
             elif isinstance(data_type, CategoricalData) or isinstance(data_type, OrdinalData):
@@ -48,7 +48,7 @@ class PolyLoss(nn.Module):
                 )
             else:
                 raise ValueError("Unknown data type")
-            
+            print(target_loss.mean())
             loss += target_loss
 
         return loss.mean()
