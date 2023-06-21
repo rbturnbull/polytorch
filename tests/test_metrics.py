@@ -1,6 +1,6 @@
 import torch
 
-from polytorch.metrics import categorical_accuracy
+from polytorch.metrics import categorical_accuracy, mse, l1, smooth_l1
 
 def test_categorical_accuracy():
     batch_size = 5
@@ -35,5 +35,53 @@ def test_categorical_accuracy_complex():
     # change targets
     accuracy = categorical_accuracy(prediction, target % 3, data_index=0, feature_axis=2)
     torch.testing.assert_close(accuracy.item(), 0.6)
+
+
+def test_metric_l1():
+    batch_size = 5
+
+    prediction = torch.randn((batch_size, 1))
+    target = prediction
+
+    result = l1(prediction, target, data_index=0, feature_axis=-1)
+    torch.testing.assert_close(result.item(), 0.0)
+
+    result = l1(prediction+.1, target, data_index=0, feature_axis=-1)
+    torch.testing.assert_close(result.item(), 0.1)
+
+    result = l1(prediction+.1, target, data_index=0, feature_axis=-1)
+    torch.testing.assert_close(result.item(), 0.1)
+
+
+def test_metric_mse():
+    batch_size = 5
+
+    prediction = torch.randn((batch_size, 1))
+    target = prediction
+
+    result = mse(prediction, target, data_index=0, feature_axis=-1)
+    torch.testing.assert_close(result.item(), 0.0)
+
+    result = mse(prediction+.1, target, data_index=0, feature_axis=-1)
+    torch.testing.assert_close(result.item(), 0.01)
+
+    result = mse(prediction+.1, target, data_index=0, feature_axis=-1)
+    torch.testing.assert_close(result.item(), 0.01)
+
+
+def test_metric_smooth_l1():
+    batch_size = 5
+
+    prediction = torch.randn((batch_size, 1))
+    target = prediction
+
+    result = smooth_l1(prediction, target, data_index=0, feature_axis=-1)
+    torch.testing.assert_close(result.item(), 0.0)
+
+    result = smooth_l1(prediction+.1, target, data_index=0, feature_axis=-1)
+    torch.testing.assert_close(result.item(), 0.005)
+
+    result = smooth_l1(prediction+.1, target, data_index=0, feature_axis=-1)
+    torch.testing.assert_close(result.item(), 0.005)
 
 
