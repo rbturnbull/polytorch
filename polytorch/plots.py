@@ -1,3 +1,4 @@
+# -*- coding: future_typing -*-
 
 from pathlib import Path
 from .embedding import PolyEmbedding
