@@ -1,6 +1,6 @@
 from torch import nn
 from typing import List
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 from .enums import ContinuousDataLossType
 
@@ -8,13 +8,29 @@ class PolyData():
     name:str = ""
 
     def create_module(self, embedding_size:int):
-        raise NotImplementedError(f'Use either CategoricalData, OrdinalData or ContinuousData')
+        raise NotImplementedError(f'Use either BinaryData, CategoricalData, OrdinalData or ContinuousData')
 
     def size(self) -> int:
-        raise NotImplementedError(f'Use either CategoricalData, OrdinalData or ContinuousData')
+        raise NotImplementedError(f'Use either BinaryData, CategoricalData, OrdinalData or ContinuousData')
 
     def get_name(self) -> str:
         return self.name or self.__class__.__name__
+
+
+def binary_default_factory():
+    return ["False", "True"]
+
+
+@dataclass
+class BinaryData(PolyData):
+    labels:List[str] = field(default_factory=binary_default_factory)
+    colors:List[str] = None
+
+    def create_module(self, embedding_size:int):
+        return nn.Embedding(2, embedding_size)
+
+    def size(self) -> int:
+        return 1
 
 
 @dataclass

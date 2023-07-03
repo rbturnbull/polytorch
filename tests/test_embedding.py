@@ -2,7 +2,7 @@ import torch
 from tempfile import NamedTemporaryFile
 from pathlib import Path
 
-from polytorch.data import OrdinalData, ContinuousData, CategoricalData
+from polytorch.data import OrdinalData, ContinuousData, CategoricalData, BinaryData
 from polytorch.embedding import OrdinalEmbedding, PolyEmbedding, ContinuousEmbedding
 
 
@@ -119,6 +119,17 @@ def test_polyembedding_categorical_simple():
     embedding = PolyEmbedding(embedding_size=embedding_size, input_types=[CategoricalData(category_count=category_count)])
 
     embedded = embedding(categorical)
+    assert embedded.shape == (batch_size, embedding_size)
+    
+
+def test_polyembedding_binary_simple():
+    embedding_size = 8
+    batch_size = 10
+    
+    binary = torch.randint( low=0, high=1, size=(batch_size,) )
+    embedding = PolyEmbedding(embedding_size=embedding_size, input_types=[BinaryData()])
+
+    embedded = embedding(binary)
     assert embedded.shape == (batch_size, embedding_size)
     
 
