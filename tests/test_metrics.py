@@ -1,6 +1,6 @@
 import torch
 
-from polytorch.metrics import categorical_accuracy, mse, l1, smooth_l1
+from polytorch.metrics import categorical_accuracy, mse, l1, smooth_l1, binary_accuracy
 
 def test_categorical_accuracy():
     batch_size = 5
@@ -15,6 +15,18 @@ def test_categorical_accuracy():
     # change targets
     accuracy = categorical_accuracy(prediction, target % 3, data_index=0)
     torch.testing.assert_close(accuracy.item(), 0.6)
+
+
+def test_binary_accuracy():
+    target = torch.tensor([False, True, False, True, False]).unsqueeze(1)
+    prediction = (target.float() - 0.5) * 10.0
+
+    accuracy = binary_accuracy(prediction, target, data_index=0)
+    torch.testing.assert_close(accuracy.item(), 1.0)
+
+    # change predictions
+    accuracy = binary_accuracy(torch.ones_like(prediction), target, data_index=0)
+    torch.testing.assert_close(accuracy.item(), 0.4)
 
 
 def test_categorical_accuracy_complex():
