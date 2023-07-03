@@ -1,6 +1,6 @@
 import torch
 
-from polytorch import PolyLoss, CategoricalData, ContinuousData, OrdinalData
+from polytorch import PolyLoss, BinaryData, CategoricalData, ContinuousData, OrdinalData
 from polytorch.enums import ContinuousDataLossType
 import pytest
 
@@ -22,7 +22,7 @@ def test_loss_categorical():
     category_count = batch_size
     
     prediction = torch.diag(torch.full((category_count,), 10.0))
-    target = torch.arange(category_count)
+    target = torch.arange(batch_size)
 
     loss_fn = PolyLoss([CategoricalData(category_count)])
     loss = loss_fn(prediction, target)
@@ -30,6 +30,19 @@ def test_loss_categorical():
 
     # change targets
     loss = loss_fn(prediction, target % 3)
+    assert loss.item() > 4.0
+
+
+def test_loss_binary():
+    target = torch.tensor([False, True, False, True, False]).unsqueeze(1)
+    prediction = (target.float() - 0.5) * 10.0
+
+    loss_fn = PolyLoss([BinaryData()])
+    loss = loss_fn(prediction, target)
+    assert loss.item() < 0.01
+
+    # change targets
+    loss = loss_fn(prediction, ~target)
     assert loss.item() > 4.0
 
 

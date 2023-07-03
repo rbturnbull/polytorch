@@ -3,7 +3,7 @@ import torch
 from torch import nn
 import torch.nn.functional as F
 
-from .data import OrdinalData, ContinuousData, CategoricalData, PolyData
+from .data import OrdinalData, ContinuousData, BinaryData, CategoricalData, PolyData
 from .util import split_tensor, permute_feature_axis, squeeze_prediction
 
 class PolyLoss(nn.Module):
@@ -28,6 +28,13 @@ class PolyLoss(nn.Module):
             if isinstance(data_type, ContinuousData):
                 prediction = squeeze_prediction(prediction, target, self.feature_axis)
                 target_loss = data_type.loss_type(prediction, target, reduction="none")
+            elif isinstance(data_type, BinaryData):
+                prediction = permute_feature_axis(prediction, old_axis=self.feature_axis, new_axis=1)
+                target_loss = F.binary_cross_entropy_with_logits(
+                    prediction, 
+                    target.float(), 
+                    reduction="none", 
+                )
             elif isinstance(data_type, CategoricalData) or isinstance(data_type, OrdinalData):
                 # TODO Focal Loss
                 # TODO Earth mover loss (Wasserstein distance) for ordinal data

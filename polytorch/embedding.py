@@ -6,6 +6,7 @@ import torch
 from torch import nn
 from torch.nn.parameter import Parameter
 import torch.nn.functional as F
+import plotly.graph_objects as go
 
 from .data import PolyData
 from .util import permute_feature_axis
@@ -101,4 +102,7 @@ class PolyEmbedding(nn.Module):
 
         return permute_feature_axis(embedded, old_axis=-1, new_axis=self.feature_axis)
 
+    def plot(self, **kwargs) -> go.Figure:
+        from .plots import plot_embedding
+        return plot_embedding(self, **kwargs)
 
