@@ -8,11 +8,10 @@ from itertools import cycle
 
 import torch
 
-from .embedding import ContinuousEmbedding, OrdinalEmbedding
 from .data import CategoricalData, OrdinalData
 
 
-def format_fig(fig):
+def format_fig(fig) -> go.Figure:
     """Formats a plotly figure in a nicer way."""
     fig.update_layout(
         width=1000,
@@ -36,12 +35,28 @@ def format_fig(fig):
 
 
 def plot_embedding(embedding:PolyEmbedding, n_components:int=2, show:bool=False, output_path:str|Path|None=None) -> go.Figure:
+    """
+    Plots the embedding in 2D or 3D.
+
+    Args:
+        embedding (PolyEmbedding): The embedding to plot.
+        n_components (int, optional): The number of principal components to plot. Can be 2 or 3. Defaults to 2.
+        show (bool, optional): Whether to show the plot. Defaults to False.
+        output_path (str|Path|None, optional): The path to save the plot to. 
+            Can be in HTML, PNG, JPEG, SVG or PDF. Defaults to None.
+
+    Returns:
+        go.Figure: The plotly figure
+    """
+    
     # get embedding weights
     weights = []
     labels = []
     colors = []
 
-    # same as px.colors.qualitative.Plotly
+    # The default colors are same as px.colors.qualitative.Plotly
+    # I'm not using that directly because that requires plotly express
+    # which requires pandas to be installed
     cmap = cycle(['#636EFA', '#EF553B', '#00CC96', '#AB63FA', '#FFA15A', '#19D3F3', '#FF6692', '#B6E880', '#FF97FF', '#FECB52'])
 
     for input_type, module in zip(embedding.input_types, embedding.embedding_modules):
@@ -69,13 +84,16 @@ def plot_embedding(embedding:PolyEmbedding, n_components:int=2, show:bool=False,
 
     weights = torch.cat(weights, dim=0).detach()
 
-    # PCA
+    # Perform a principal component analysis
     pca = PCA(n_components=n_components)
     weights_reduced = pca.fit_transform(weights)
 
     # plot
     fig = go.Figure()
 
+    # This is done as a loop so that the legend has all the different categorical labels separate
+    # This will be a large list in the legend potentially
+    # This could be an option in the future
     for vector, label, color in zip(weights_reduced, labels, colors):
         if n_components == 2:
             fig.add_trace(go.Scatter(
