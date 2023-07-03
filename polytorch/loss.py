@@ -41,7 +41,7 @@ class PolyLoss(nn.Module):
                 )
             else:
                 raise ValueError("Unknown data type")
-            print(target_loss.mean())
+
             loss += target_loss
 
         return loss.mean()
