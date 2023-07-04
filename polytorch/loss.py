@@ -29,7 +29,7 @@ class PolyLoss(nn.Module):
                 prediction = squeeze_prediction(prediction, target, self.feature_axis)
                 target_loss = data_type.loss_type(prediction, target, reduction="none")
             elif isinstance(data_type, BinaryData):
-                prediction = permute_feature_axis(prediction, old_axis=self.feature_axis, new_axis=1)
+                prediction = squeeze_prediction(prediction, target, self.feature_axis)
                 target_loss = F.binary_cross_entropy_with_logits(
                     prediction, 
                     target.float(), 

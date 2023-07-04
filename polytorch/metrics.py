@@ -34,6 +34,7 @@ def categorical_accuracy(predictions, *targets, data_index=None, feature_axis=-1
 def binary_accuracy(predictions, *targets, data_index=None, feature_axis=-1):
     my_predictions, my_targets = get_predictions_target_for_index(predictions, *targets, data_index=data_index, feature_axis=feature_axis)
     my_predictions = my_predictions >= 0.0
+    my_predictions = squeeze_prediction(my_predictions, my_targets, feature_axis)
 
     accuracy = (my_predictions == my_targets).float().mean()
     return accuracy
