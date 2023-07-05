@@ -30,11 +30,7 @@ class PolyLoss(nn.Module):
                 target_loss = data_type.loss_type(prediction, target, reduction="none")
             elif isinstance(data_type, BinaryData):
                 prediction = squeeze_prediction(prediction, target, self.feature_axis)
-                target_loss = F.binary_cross_entropy_with_logits(
-                    prediction, 
-                    target.float(), 
-                    reduction="none", 
-                )
+                target_loss = data_type.loss_type(prediction, target)
             elif isinstance(data_type, CategoricalData) or isinstance(data_type, OrdinalData):
                 # TODO Focal Loss
                 # TODO Earth mover loss (Wasserstein distance) for ordinal data

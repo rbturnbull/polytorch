@@ -2,7 +2,7 @@ from torch import nn
 from typing import List
 from dataclasses import dataclass, field
 
-from .enums import ContinuousDataLossType
+from .enums import ContinuousDataLossType, BinaryDataLossType
 
 class PolyData():
     name:str = ""
@@ -23,6 +23,7 @@ def binary_default_factory():
 
 @dataclass
 class BinaryData(PolyData):
+    loss_type:BinaryDataLossType = BinaryDataLossType.CROSS_ENTROPY
     labels:List[str] = field(default_factory=binary_default_factory)
     colors:List[str] = None
 

@@ -52,4 +52,20 @@ def smooth_l1(predictions, *targets, data_index=None, feature_axis=-1):
     return function_metric(predictions, *targets, data_index=data_index, feature_axis=feature_axis, function=F.smooth_l1_loss)
 
 
+def calc_dice_score(predictions, target, smooth:float=1.):
+    predictions = predictions.view(-1)
+    target = target.view(-1)
+    intersection = (predictions * target).sum()
+    
+    return ((2. * intersection + smooth) /
+              (predictions.sum() + target.sum() + smooth)
+    )
 
+
+def calc_iou(predictions, target, smooth:float=1.):
+    predictions = predictions.view(-1)
+    target = target.view(-1)
+    intersection = (predictions * target).sum()
+    union = predictions.sum() + target.sum() - intersection
+    
+    return (intersection + smooth) / (union + smooth)

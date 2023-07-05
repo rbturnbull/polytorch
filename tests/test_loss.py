@@ -1,7 +1,7 @@
 import torch
 
 from polytorch import PolyLoss, BinaryData, CategoricalData, ContinuousData, OrdinalData
-from polytorch.enums import ContinuousDataLossType
+from polytorch.enums import ContinuousDataLossType, BinaryDataLossType
 import pytest
 
 
@@ -44,6 +44,32 @@ def test_loss_binary():
     # change targets
     loss = loss_fn(prediction, ~target)
     assert loss.item() > 4.0
+
+
+def test_loss_binary_iou():
+    target = torch.tensor([False, True, False, True, False]).unsqueeze(1)
+    prediction = (target.float() - 0.5) * 10.0
+
+    loss_fn = PolyLoss([BinaryData(loss_type=BinaryDataLossType.IOU)])
+    loss = loss_fn(prediction, target)
+    assert loss.item() < 0.01
+
+    # change targets
+    loss = loss_fn(prediction, ~target)
+    assert 0.83 < loss.item() < 0.84
+
+
+def test_loss_binary_dice():
+    target = torch.tensor([False, True, False, True, False]).unsqueeze(1)
+    prediction = (target.float() - 0.5) * 10.0
+
+    loss_fn = PolyLoss([BinaryData(loss_type=BinaryDataLossType.DICE)])
+    loss = loss_fn(prediction, target)
+    assert loss.item() < 0.01
+
+    # change targets
+    loss = loss_fn(prediction, ~target)
+    assert 0.83 < loss.item() < 0.84
 
 
 def test_loss_categorical_complex():

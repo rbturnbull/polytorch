@@ -14,3 +14,31 @@ class ContinuousDataLossType(Enum):
 
     def __call__(self, *args, **kwargs):
         return self.loss_func(*args, **kwargs)
+
+
+class BinaryDataLossType(Enum):
+    CROSS_ENTROPY = 0
+    IOU = 1
+    DICE = 2
+
+    def __call__(self, prediction, target):
+        if self == BinaryDataLossType.CROSS_ENTROPY:
+            return F.binary_cross_entropy_with_logits(
+                prediction, 
+                target.float(), 
+            )
+        elif self == BinaryDataLossType.IOU:
+            from .metrics import calc_iou
+            return 1 - calc_iou(
+                prediction > 0.0, 
+                target, 
+            )
+        elif self == BinaryDataLossType.DICE:
+            from .metrics import calc_dice_score
+            return 1 - calc_dice_score(
+                prediction > 0.0, 
+                target, 
+            )
+        
+        raise NotImplementedError("Dice loss not implemented yet")
+    
