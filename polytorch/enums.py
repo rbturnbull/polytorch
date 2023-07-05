@@ -30,13 +30,13 @@ class BinaryDataLossType(Enum):
         elif self == BinaryDataLossType.IOU:
             from .metrics import calc_iou
             return 1 - calc_iou(
-                prediction > 0.0, 
+                prediction.sigmoid(), 
                 target, 
             )
         elif self == BinaryDataLossType.DICE:
             from .metrics import calc_dice_score
             return 1 - calc_dice_score(
-                prediction > 0.0, 
+                prediction.sigmoid(), 
                 target, 
             )
         

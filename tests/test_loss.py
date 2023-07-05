@@ -52,11 +52,11 @@ def test_loss_binary_iou():
 
     loss_fn = PolyLoss([BinaryData(loss_type=BinaryDataLossType.IOU)])
     loss = loss_fn(prediction, target)
-    assert loss.item() < 0.01
+    assert loss.item() < 0.012
 
     # change targets
     loss = loss_fn(prediction, ~target)
-    assert 0.83 < loss.item() < 0.84
+    assert 0.82 < loss.item() < 0.84
 
 
 def test_loss_binary_dice():
@@ -69,7 +69,7 @@ def test_loss_binary_dice():
 
     # change targets
     loss = loss_fn(prediction, ~target)
-    assert 0.83 < loss.item() < 0.84
+    assert 0.82 < loss.item() < 0.84
 
 
 def test_loss_categorical_complex():
