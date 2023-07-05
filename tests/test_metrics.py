@@ -1,6 +1,6 @@
 import torch
 
-from polytorch.metrics import categorical_accuracy, mse, l1, smooth_l1, binary_accuracy
+from polytorch.metrics import categorical_accuracy, mse, l1, smooth_l1, binary_accuracy, binary_dice, binary_iou
 
 def test_categorical_accuracy():
     batch_size = 5
@@ -27,6 +27,30 @@ def test_binary_accuracy():
     # change predictions
     accuracy = binary_accuracy(torch.ones_like(prediction), target, data_index=0)
     torch.testing.assert_close(accuracy.item(), 0.4)
+
+
+def test_binary_dice():
+    target = torch.tensor([False, True, False, True, False]).unsqueeze(1)
+    prediction = (target.float() - 0.5) * 10.0
+
+    dice = binary_dice(prediction, target, data_index=0)
+    torch.testing.assert_close(dice.item(), 1.0)
+
+    # change predictions
+    dice = binary_dice(torch.ones_like(prediction), target, data_index=0)
+    torch.testing.assert_close(dice.item(), 0.625)
+
+
+def test_binary_iou():
+    target = torch.tensor([False, True, False, True, False]).unsqueeze(1)
+    prediction = (target.float() - 0.5) * 10.0
+
+    iou = binary_iou(prediction, target, data_index=0)
+    torch.testing.assert_close(iou.item(), 1.0)
+
+    # change predictions
+    iou = binary_iou(torch.ones_like(prediction), target, data_index=0)
+    torch.testing.assert_close(iou.item(), 0.5)
 
 
 def test_categorical_accuracy_complex():

@@ -69,3 +69,19 @@ def calc_iou(predictions, target, smooth:float=1.):
     union = predictions.sum() + target.sum() - intersection
     
     return (intersection + smooth) / (union + smooth)
+
+
+def binary_dice(predictions, *targets, data_index=None, feature_axis=-1):
+    my_predictions, my_targets = get_predictions_target_for_index(predictions, *targets, data_index=data_index, feature_axis=feature_axis)
+    my_predictions = my_predictions >= 0.0
+    my_predictions = squeeze_prediction(my_predictions, my_targets, feature_axis)
+
+    return calc_dice_score(my_predictions, my_targets)
+
+
+def binary_iou(predictions, *targets, data_index=None, feature_axis=-1):
+    my_predictions, my_targets = get_predictions_target_for_index(predictions, *targets, data_index=data_index, feature_axis=feature_axis)
+    my_predictions = my_predictions >= 0.0
+    my_predictions = squeeze_prediction(my_predictions, my_targets, feature_axis)
+
+    return calc_iou(my_predictions, my_targets)
