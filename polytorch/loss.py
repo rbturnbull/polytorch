@@ -25,26 +25,9 @@ class PolyLoss(nn.Module):
 
         loss = 0.0
         for prediction, target, data_type in zip(predictions, targets, self.data_types):
-            if isinstance(data_type, ContinuousData):
-                prediction = squeeze_prediction(prediction, target, self.feature_axis)
-                target_loss = data_type.loss_type(prediction, target, reduction="none")
-            elif isinstance(data_type, BinaryData):
-                prediction = squeeze_prediction(prediction, target, self.feature_axis)
-                target_loss = data_type.loss_type(prediction, target)
-            elif isinstance(data_type, CategoricalData) or isinstance(data_type, OrdinalData):
-                # TODO Focal Loss
-                # TODO Earth mover loss (Wasserstein distance) for ordinal data
-                # cross-entropy over axis 1
-                prediction = permute_feature_axis(prediction, old_axis=self.feature_axis, new_axis=1)
-                target_loss = F.cross_entropy(
-                    prediction, 
-                    target.long(), 
-                    reduction="none", 
-                    # label_smoothing=self.label_smoothing,
-                )
-            else:
-                raise ValueError("Unknown data type")
-
-            loss += target_loss
+            if not hasattr(data_type, "calculate_loss"):
+                raise ValueError(f"Data type {data_type} does not have a calculate_loss method")
+            
+            loss += data_type.calculate_loss(prediction, target, feature_axis=self.feature_axis)
 
         return loss.mean()

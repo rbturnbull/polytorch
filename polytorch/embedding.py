@@ -89,7 +89,7 @@ class PolyEmbedding(nn.Module):
         self.input_types = input_types
         self.embedding_size = embedding_size
         self.embedding_modules = nn.ModuleList([
-            input.create_module(embedding_size) for input in input_types
+            input.embedding_module(embedding_size) for input in input_types
         ])
         self.feature_axis = feature_axis
 
