@@ -95,6 +95,7 @@ class CategoricalData(PolyData):
                 prediction.softmax(dim=feature_axis), 
                 target, 
                 n_classes=self.category_count,
+                feature_axis=feature_axis,
             )
         
         raise NotImplementedError(f"Unknown loss type: {self.loss_type} for {self.__class__.__name__}")

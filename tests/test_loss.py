@@ -1,7 +1,7 @@
 import torch
 
 from polytorch import PolyLoss, BinaryData, CategoricalData, ContinuousData, OrdinalData
-from polytorch.enums import ContinuousDataLossType, BinaryDataLossType
+from polytorch import ContinuousDataLossType, BinaryDataLossType, CategoricalLossType
 import pytest
 
 
@@ -91,6 +91,27 @@ def test_loss_categorical_complex():
     # change targets
     loss = loss_fn(prediction, target % 3)
     assert loss.item() > 4.0
+
+
+def test_loss_categorical_dice():
+    batch_size = 5
+    category_count = batch_size
+    timesteps = 3
+    height = width = 128
+    
+    prediction = torch.zeros((batch_size, timesteps, category_count, height, width))
+    target = torch.zeros( (batch_size, timesteps, height, width), dtype=int)
+    for i in range(batch_size):
+        prediction[i, :, i, :, :] = 10.0
+        target[i, :, :, :] = i
+
+    loss_fn = PolyLoss([CategoricalData(category_count, loss_type=CategoricalLossType.DICE)], feature_axis=2)
+    loss = loss_fn(prediction, target)
+    assert loss.item() < 0.01
+
+    # change targets
+    loss = loss_fn(prediction, target % 3)
+    torch.testing.assert_close(loss.item(), 1.0)
 
 
 def test_loss_ordinal():

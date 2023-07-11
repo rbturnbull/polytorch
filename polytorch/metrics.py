@@ -77,7 +77,6 @@ def calc_generalized_dice_score(predictions, target, n_classes:int, power:float=
     """
     numerator = 0.0
     denominator = 0.0
-
     slice_indices = [slice(0, None)] * len(predictions.shape)
     for i in range(n_classes):
         my_target = (target == i)
