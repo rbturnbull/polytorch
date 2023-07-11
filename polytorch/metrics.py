@@ -62,6 +62,37 @@ def calc_dice_score(predictions, target, smooth:float=1.):
     )
 
 
+def calc_generalized_dice_score(predictions, target, n_classes:int, power:float=2.0, smooth:float=1.0, feature_axis:int=-1):
+    """
+    A generalized Dice score for multi-class segmentation.
+
+    If power=0.0, this is equivalent to normal Dice score (i.e. volume "implicit" weighting)
+    If power=1.0, this is equivalent to 'equal' weighting.
+    If power=2.0, this is equivalent to 'inverse volume' weighting.
+
+    See:
+        - https://www.sciencedirect.com/science/article/pii/S2590005619300049#bib73
+        - https://arxiv.org/pdf/1707.03237.pdf
+        - https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=1717643
+    """
+    numerator = 0.0
+    denominator = 0.0
+
+    slice_indices = [slice(0, None)] * len(predictions.shape)
+    for i in range(n_classes):
+        my_target = (target == i)
+        my_target_sum = my_target.sum()
+        weight = 1/(my_target_sum**power + smooth)
+
+        slice_indices[feature_axis] = i
+        my_predictions = predictions[slice_indices]
+
+        numerator += weight * (my_predictions*my_target).sum()
+        denominator += weight * (my_predictions.sum() + my_target_sum)
+    
+    return 2. * numerator / denominator
+
+
 def calc_iou(predictions, target, smooth:float=1.):
     predictions = predictions.view(-1)
     target = target.view(-1)
