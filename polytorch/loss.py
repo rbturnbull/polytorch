@@ -30,6 +30,6 @@ class PolyLoss(nn.Module):
             if not hasattr(data_type, "calculate_loss"):
                 raise ValueError(f"Data type {data_type} does not have a calculate_loss method")
             
-            loss += data_type.calculate_loss(prediction, target, feature_axis=feature_axis)
+            loss += data_type.calculate_loss(prediction, target, feature_axis=feature_axis).mean()
 
-        return loss.mean()
+        return loss

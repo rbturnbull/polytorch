@@ -115,3 +115,16 @@ def binary_iou(predictions, *targets, data_index=None, feature_axis=-1):
     my_predictions = squeeze_prediction(my_predictions, my_targets, feature_axis)
 
     return calc_iou(my_predictions, my_targets)
+
+
+def generalized_dice(predictions, *targets, data_index=None, feature_axis=-1):
+    my_predictions, my_targets = get_predictions_target_for_index(predictions, *targets, data_index=data_index, feature_axis=feature_axis)
+    score = calc_generalized_dice_score(
+        my_predictions.softmax(dim=feature_axis), 
+        my_targets, 
+        n_classes=my_predictions.shape[feature_axis],
+        feature_axis=feature_axis,
+    )
+    return score
+
+
