@@ -1,7 +1,7 @@
 import torch
 
 from polytorch import PolyLoss, BinaryData, CategoricalData, ContinuousData, OrdinalData
-from polytorch import ContinuousDataLossType, BinaryDataLossType, CategoricalLossType
+from polytorch import ContinuousLossType, BinaryLossType, CategoricalLossType
 import pytest
 
 
@@ -50,7 +50,7 @@ def test_loss_binary_iou():
     target = torch.tensor([False, True, False, True, False]).unsqueeze(1)
     prediction = (target.float() - 0.5) * 10.0
 
-    loss_fn = PolyLoss([BinaryData(loss_type=BinaryDataLossType.IOU)])
+    loss_fn = PolyLoss([BinaryData(loss_type=BinaryLossType.IOU)])
     loss = loss_fn(prediction, target)
     assert loss.item() < 0.012
 
@@ -63,7 +63,7 @@ def test_loss_binary_dice():
     target = torch.tensor([False, True, False, True, False]).unsqueeze(1)
     prediction = (target.float() - 0.5) * 10.0
 
-    loss_fn = PolyLoss([BinaryData(loss_type=BinaryDataLossType.DICE)])
+    loss_fn = PolyLoss([BinaryData(loss_type=BinaryLossType.DICE)])
     loss = loss_fn(prediction, target)
     assert loss.item() < 0.01
 
@@ -136,7 +136,7 @@ def test_loss_continuous_l1():
     prediction = torch.randn((batch_size, 1))
     target = prediction
 
-    loss_fn = PolyLoss([ContinuousData(loss_type=ContinuousDataLossType.L1_LOSS)])
+    loss_fn = PolyLoss([ContinuousData(loss_type=ContinuousLossType.L1_LOSS)])
     loss = loss_fn(prediction, target)
     torch.testing.assert_close(loss.item(), 0.0)
 
@@ -153,7 +153,7 @@ def test_loss_continuous_mse():
     prediction = torch.randn((batch_size, 1))
     target = prediction
 
-    loss_fn = PolyLoss([ContinuousData(loss_type=ContinuousDataLossType.MSE_LOSS)])
+    loss_fn = PolyLoss([ContinuousData(loss_type=ContinuousLossType.MSE_LOSS)])
     loss = loss_fn(prediction, target)
     torch.testing.assert_close(loss.item(), 0.0)
 
@@ -170,7 +170,7 @@ def test_loss_continuous_smooth_l1():
     prediction = torch.randn((batch_size, 1))
     target = prediction
 
-    loss_fn = PolyLoss([ContinuousData(loss_type=ContinuousDataLossType.SMOOTH_L1_LOSS)])
+    loss_fn = PolyLoss([ContinuousData(loss_type=ContinuousLossType.SMOOTH_L1_LOSS)])
     loss = loss_fn(prediction, target)
     torch.testing.assert_close(loss.item(), 0.0)
 
@@ -189,7 +189,7 @@ def test_loss_continuous_complex():
     prediction = torch.randn((batch_size, timesteps, 1, height, width))
     target = prediction.squeeze()
 
-    loss_fn = PolyLoss([ContinuousData(loss_type=ContinuousDataLossType.L1_LOSS)], feature_axis=2)
+    loss_fn = PolyLoss([ContinuousData(loss_type=ContinuousLossType.L1_LOSS)], feature_axis=2)
     loss = loss_fn(prediction, target)
     torch.testing.assert_close(loss.item(), 0.0)
 

@@ -5,7 +5,7 @@ import torch.nn.functional as F
 from .util import permute_feature_axis, squeeze_prediction
 from functools import cached_property
 
-from .enums import ContinuousDataLossType, BinaryDataLossType, CategoricalLossType
+from .enums import ContinuousLossType, BinaryLossType, CategoricalLossType
 
 
 class PolyData():
@@ -33,7 +33,7 @@ def binary_default_factory():
 
 @dataclass
 class BinaryData(PolyData):
-    loss_type:BinaryDataLossType = BinaryDataLossType.CROSS_ENTROPY
+    loss_type:BinaryLossType = BinaryLossType.CROSS_ENTROPY
     labels:List[str] = field(default_factory=binary_default_factory)
     colors:List[str] = None
 
@@ -46,18 +46,18 @@ class BinaryData(PolyData):
     def calculate_loss(self, prediction, target, feature_axis:int=-1):
         prediction = squeeze_prediction(prediction, target, feature_axis)
 
-        if self.loss_type == BinaryDataLossType.CROSS_ENTROPY:
+        if self.loss_type == BinaryLossType.CROSS_ENTROPY:
             return F.binary_cross_entropy_with_logits(
                 prediction, 
                 target.float(), 
             )
-        elif self.loss_type == BinaryDataLossType.IOU:
+        elif self.loss_type == BinaryLossType.IOU:
             from .metrics import calc_iou
             return 1 - calc_iou(
                 prediction.sigmoid(), 
                 target, 
             )
-        elif self.loss_type == BinaryDataLossType.DICE:
+        elif self.loss_type == BinaryLossType.DICE:
             from .metrics import calc_dice_score
             return 1 - calc_dice_score(
                 prediction.sigmoid(), 
@@ -113,7 +113,7 @@ class OrdinalData(CategoricalData):
 
 @dataclass
 class ContinuousData(PolyData):
-    loss_type:ContinuousDataLossType = ContinuousDataLossType.SMOOTH_L1_LOSS
+    loss_type:ContinuousLossType = ContinuousLossType.SMOOTH_L1_LOSS
     color:str = ""
 
     def embedding_module(self, embedding_size:int) -> nn.Module:
