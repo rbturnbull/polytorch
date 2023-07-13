@@ -48,6 +48,8 @@ def plot_embedding(embedding:PolyEmbedding, n_components:int=2, show:bool=False,
     Returns:
         go.Figure: The plotly figure
     """
+    if n_components not in [2, 3]:
+        raise ValueError(f"n_components must be 2 or 3, not {n_components}")
     
     # get embedding weights
     weights = []
@@ -69,7 +71,7 @@ def plot_embedding(embedding:PolyEmbedding, n_components:int=2, show:bool=False,
         if isinstance(input_type, CategoricalData) and not isinstance(input_type, OrdinalData):
             my_labels = (
                 input_type.labels if input_type.labels is not None 
-                else [f"{input_type.get_name()}_{i}" for i in range(input_type.category_count)]
+                else [f"{input_type.name}_{i}" for i in range(input_type.category_count)]
             )
             labels.extend(my_labels)
 
@@ -79,8 +81,8 @@ def plot_embedding(embedding:PolyEmbedding, n_components:int=2, show:bool=False,
             )
             colors.extend(my_colors)
         else:
-            labels.append(input_type.get_name())
-            colors.append(input_type.color if input_type.color else next(cmap))
+            labels.append(input_type.name)
+            colors.append(getattr(input_type, "color", '') or next(cmap))
 
     weights = torch.cat(weights, dim=0).detach()
 
@@ -119,8 +121,6 @@ def plot_embedding(embedding:PolyEmbedding, n_components:int=2, show:bool=False,
                 yaxis_title='Component 2',
                 zaxis_title='Component 3',
             ))
-        else:
-            raise ValueError(f"n_components must be 2 or 3, not {n_components}")
         
     fig.update_layout(showlegend=True)
     format_fig(fig)

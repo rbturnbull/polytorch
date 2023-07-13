@@ -1,5 +1,6 @@
 from torch import nn
-from typing import List
+import abc
+from typing import List, Optional
 from dataclasses import dataclass, field
 import torch.nn.functional as F
 from .util import permute_feature_axis, squeeze_prediction
@@ -7,24 +8,32 @@ from functools import cached_property
 
 from .enums import ContinuousLossType, BinaryLossType, CategoricalLossType
 
+@dataclass(kw_only=True)
+class PolyData(abc.ABC):
+    name: str = ""
+    _name: str = field(init=False, repr=False)
 
-class PolyData():
-    name:str = ""
+    @property
+    def name(self) -> str:
+        return self._name
 
-    def get_name(self) -> str:
-        return self.name or self.__class__.__name__
+    @name.setter
+    def name(self, value: str) -> None:
+        if type(value) is property or not value:
+            value = self.__class__.__name__
+        self._name = value
 
+    @abc.abstractmethod
     def embedding_module(self, embedding_size:int) -> nn.Module:
-        raise self._raise_not_implemented_error()
+        pass
 
+    @abc.abstractmethod
     def size(self) -> int:
-        raise self._raise_not_implemented_error()
+        pass
 
+    @abc.abstractmethod
     def calculate_loss(self, prediction, target, feature_axis:int=-1):
-        raise self._raise_not_implemented_error()
-
-    def _raise_not_implemented_error(self):
-        raise NotImplementedError(f'Use either BinaryData, CategoricalData, OrdinalData or ContinuousData')
+        pass
 
 
 def binary_default_factory():
@@ -35,7 +44,7 @@ def binary_default_factory():
 class BinaryData(PolyData):
     loss_type:BinaryLossType = BinaryLossType.CROSS_ENTROPY
     labels:List[str] = field(default_factory=binary_default_factory)
-    colors:List[str] = None
+    colors:Optional[List[str]] = None
 
     def embedding_module(self, embedding_size:int) -> nn.Module:
         return nn.Embedding(2, embedding_size)
@@ -71,8 +80,8 @@ class BinaryData(PolyData):
 class CategoricalData(PolyData):
     category_count:int
     loss_type:CategoricalLossType = CategoricalLossType.CROSS_ENTROPY
-    labels:List[str] = None
-    colors:List[str] = None
+    labels:Optional[List[str]] = None
+    colors:Optional[List[str]] = None
 
     def embedding_module(self, embedding_size:int) -> nn.Module:
         return nn.Embedding(self.category_count, embedding_size)

@@ -4,15 +4,8 @@ import pytest
 import torch
 
 def test_polydata_abstract():
-    data = PolyData()
-    with pytest.raises(NotImplementedError):
-        data.embedding_module(embedding_size=1)
-
-    with pytest.raises(NotImplementedError):
-        data.size()        
-
-    with pytest.raises(NotImplementedError):
-        data.calculate_loss(None, None)
+    with pytest.raises(TypeError):
+        PolyData()
 
 
 def test_binary_data_loss_junk():
