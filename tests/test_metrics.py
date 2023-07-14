@@ -167,3 +167,5 @@ def test_generalized_dice():
 
     result = generalized_dice(prediction, target, data_index=0, feature_axis=1)
     torch.testing.assert_close(result.item(), 1.0)
+
+    

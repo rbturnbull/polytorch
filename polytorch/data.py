@@ -1,27 +1,16 @@
 from torch import nn
 import abc
 from typing import List, Optional
-from dataclasses import dataclass, field
+from attrs import define, Factory, field
 import torch.nn.functional as F
-from .util import permute_feature_axis, squeeze_prediction
-from functools import cached_property
 
+from .util import permute_feature_axis, squeeze_prediction
 from .enums import ContinuousLossType, BinaryLossType, CategoricalLossType
 
-@dataclass(kw_only=True)
+
+@define(kw_only=True)
 class PolyData(abc.ABC):
-    name: str = ""
-    _name: str = field(init=False, repr=False)
-
-    @property
-    def name(self) -> str:
-        return self._name
-
-    @name.setter
-    def name(self, value: str) -> None:
-        if type(value) is property or not value:
-            value = self.__class__.__name__
-        self._name = value
+    name: str = Factory(lambda self: self.__class__.__name__, takes_self=True)
 
     @abc.abstractmethod
     def embedding_module(self, embedding_size:int) -> nn.Module:
@@ -40,10 +29,10 @@ def binary_default_factory():
     return ["False", "True"]
 
 
-@dataclass
+@define
 class BinaryData(PolyData):
     loss_type:BinaryLossType = BinaryLossType.CROSS_ENTROPY
-    labels:List[str] = field(default_factory=binary_default_factory)
+    labels:List[str] = field(factory=binary_default_factory)
     colors:Optional[List[str]] = None
 
     def embedding_module(self, embedding_size:int) -> nn.Module:
@@ -76,7 +65,7 @@ class BinaryData(PolyData):
         raise NotImplementedError(f"Unknown loss type: {self.loss_type} for {self.__class__.__name__}")
 
 
-@dataclass
+@define
 class CategoricalData(PolyData):
     category_count:int
     loss_type:CategoricalLossType = CategoricalLossType.CROSS_ENTROPY
@@ -109,7 +98,7 @@ class CategoricalData(PolyData):
         raise NotImplementedError(f"Unknown loss type: {self.loss_type} for {self.__class__.__name__}")
 
 
-@dataclass
+@define
 class OrdinalData(CategoricalData):
     color:str = ""
     # add in option to estimate distances or to set them?
@@ -119,7 +108,7 @@ class OrdinalData(CategoricalData):
         return OrdinalEmbedding(self.category_count, embedding_size)
 
 
-@dataclass
+@define
 class ContinuousData(PolyData):
     loss_type:ContinuousLossType = ContinuousLossType.SMOOTH_L1_LOSS
     color:str = ""
@@ -135,7 +124,7 @@ class ContinuousData(PolyData):
         prediction = squeeze_prediction(prediction, target, feature_axis)
         return self.loss_func(prediction, target, reduction="none")
 
-    @cached_property
+    @property
     def loss_func(self):
         return getattr(F, self.loss_type.name.lower())
 
