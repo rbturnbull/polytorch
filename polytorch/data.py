@@ -103,7 +103,6 @@ class CategoricalData(PolyData):
             return 1. - calc_generalized_dice_score(
                 prediction.softmax(dim=feature_axis), 
                 target, 
-                n_classes=self.category_count,
                 feature_axis=feature_axis,
             )
         

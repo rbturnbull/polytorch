@@ -1,6 +1,11 @@
 import torch
 from torch.nn import functional as F
-from polytorch.metrics import categorical_accuracy, mse, l1, smooth_l1, binary_accuracy, binary_dice, binary_iou, calc_generalized_dice_score
+from polytorch.metrics import (
+    categorical_accuracy, 
+    mse, l1, smooth_l1, 
+    binary_accuracy, binary_dice, binary_iou, 
+    calc_generalized_dice_score, generalized_dice,
+)
 
 def test_categorical_accuracy():
     batch_size = 5
@@ -146,5 +151,19 @@ def test_calc_generalized_dice_score():
     target = torch.randint(n_classes, (batch_size, height, width))
     prediction = F.one_hot(target, n_classes).permute(0, 3, 1, 2).float()
 
-    result = calc_generalized_dice_score(prediction, target, n_classes=n_classes, feature_axis=1)
+    result = calc_generalized_dice_score(prediction, target, feature_axis=1)
+    torch.testing.assert_close(result.item(), 1.0)
+
+
+def test_generalized_dice():
+    batch_size = 5
+    n_classes = 9
+    width = 64
+    height = 128
+
+    target = torch.randint(n_classes, (batch_size, height, width))
+    prediction = F.one_hot(target, n_classes).permute(0, 3, 1, 2).float()
+    prediction *= 100.0 # convert to logits
+
+    result = generalized_dice(prediction, target, data_index=0, feature_axis=1)
     torch.testing.assert_close(result.item(), 1.0)
