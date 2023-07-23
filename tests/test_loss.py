@@ -42,7 +42,7 @@ def test_loss_binary():
     assert loss.item() < 0.01
 
     # change targets
-    loss = loss_fn(prediction, ~target)
+    loss = loss_fn(prediction, torch.logical_not(target))
     assert loss.item() > 4.0
 
 
@@ -55,7 +55,7 @@ def test_loss_binary_iou():
     assert loss.item() < 0.012
 
     # change targets
-    loss = loss_fn(prediction, ~target)
+    loss = loss_fn(prediction, torch.logical_not(target))
     assert 0.82 < loss.item() < 0.84
 
 
@@ -68,7 +68,7 @@ def test_loss_binary_dice():
     assert loss.item() < 0.01
 
     # change targets
-    loss = loss_fn(prediction, ~target)
+    loss = loss_fn(prediction, torch.logical_not(target))
     assert 0.82 < loss.item() < 0.84
 
 
