@@ -1,7 +1,8 @@
 import torch
-from torch import nn
+from tempfile import NamedTemporaryFile
+from pathlib import Path
 
-from polytorch.data import OrdinalData, ContinuousData, CategoricalData
+from polytorch.data import OrdinalData, ContinuousData, CategoricalData, BinaryData
 from polytorch.embedding import OrdinalEmbedding, PolyEmbedding, ContinuousEmbedding
 
 
@@ -121,6 +122,17 @@ def test_polyembedding_categorical_simple():
     assert embedded.shape == (batch_size, embedding_size)
     
 
+def test_polyembedding_binary_simple():
+    embedding_size = 8
+    batch_size = 10
+    
+    binary = torch.randint( low=0, high=1, size=(batch_size,) )
+    embedding = PolyEmbedding(embedding_size=embedding_size, input_types=[BinaryData()])
+
+    embedded = embedding(binary)
+    assert embedded.shape == (batch_size, embedding_size)
+    
+
 def test_polyembedding_all():
     embedding_size = 8
     batch_size = 10
@@ -167,3 +179,32 @@ def test_polyembedding_feature_axis():
     x = embedding(ordinal, continuous, categorical)
     assert x.shape == (batch_size, timesteps, embedding_size, height, width)
 
+
+def test_plot_embedding_2d_from_object():
+    embedding_size = 8
+    ordinal_count = 7
+    category_count = 5
+
+    embedding = PolyEmbedding(embedding_size=embedding_size, input_types=[
+        OrdinalData(category_count=ordinal_count),
+        ContinuousData(),
+        CategoricalData(
+            category_count=category_count,
+            labels=["Earth", "Fire", "Water", "Air", "Heart"],
+            colors=["Brown", "Red", "Blue", "Cyan", "Orange"],
+        ),  
+    ])
+
+
+    with NamedTemporaryFile(suffix=".html") as tmp:
+        output_path = Path(tmp.name)
+        fig = embedding.plot(n_components=2, output_path=output_path)
+        assert fig is not None
+
+        fig_json = fig.to_json()
+        assert '{"data":[{"marker":{"color":"#636EFA"},"mode":"markers","name":"OrdinalData"' in fig_json
+        assert '"xaxis":{"title":{"text":"Component 1"},"gridcolor":"#dddddd","showline":true,"' in fig_json
+        assert '"mode":"markers","name":"Earth","x":' in fig_json
+
+        assert output_path.exists()
+        assert "<html>" in output_path.read_text()

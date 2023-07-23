@@ -1,10 +1,8 @@
 from typing import List, Tuple
 from torch import Tensor
 
-from .data import PolyData
 
-
-def total_size(data_types:List[PolyData]) -> int:
+def total_size(data_types) -> int:
     """
     Calculates the total number of features required to predict a list of output types.
 
@@ -17,7 +15,7 @@ def total_size(data_types:List[PolyData]) -> int:
     return sum(data_type.size() for data_type in data_types)
 
 
-def split_tensor(tensor:Tensor, data_types:List[PolyData], feature_axis:int=-1) -> Tuple[Tensor]:
+def split_tensor(tensor:Tensor, data_types, feature_axis:int=-1) -> Tuple[Tensor, ...]:
     """
     Splits a tensor into a tuple of tensors, one for each data type.
 
@@ -27,7 +25,7 @@ def split_tensor(tensor:Tensor, data_types:List[PolyData], feature_axis:int=-1) 
         feature_axis (int, optional): The axis which has the features to predict. Defaults to last axis.
 
     Returns:
-        Tuple[Tensor]: A tuple of tensores, one for each data type.
+        Tuple[Tensor, ...]: A tuple of tensors, one for each data type.
     """
     current_index = 0
     split_tensors = []

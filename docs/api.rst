@@ -45,6 +45,13 @@ Metrics
     :members:
     
 
+Plots
+=======================
+
+.. automodule:: polytorch.plots
+    :members:
+    
+
 Util
 =======================
 
