@@ -3,6 +3,7 @@ from polytorch.data import PolyData, BinaryData, CategoricalData
 import pytest
 import torch
 
+
 def test_polydata_abstract():
     with pytest.raises(TypeError):
         PolyData()
@@ -20,3 +21,5 @@ def test_categorical_data_loss_junk():
     with pytest.raises(NotImplementedError):
         target = torch.tensor([0, 2, 3, 2, 3]).unsqueeze(1)
         data.calculate_loss(target, target)        
+
+

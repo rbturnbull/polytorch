@@ -1,9 +1,9 @@
 import torch
 
-from polytorch import PolyLoss, BinaryData, CategoricalData, ContinuousData, OrdinalData
+from polytorch import PolyLoss, BinaryData, CategoricalData, ContinuousData, OrdinalData, HierarchicalData
 from polytorch import ContinuousLossType, BinaryLossType, CategoricalLossType
 import pytest
-
+from hierarchicalsoftmax import SoftmaxNode
 
 def test_loss_junk():
     batch_size = 5
@@ -199,4 +199,33 @@ def test_loss_continuous_complex():
     loss = loss_fn(prediction-0.1, target)
     torch.testing.assert_close(loss.item(), 0.1)
 
+
+def test_hierarchical_data_loss():
+    root = SoftmaxNode("root")
+    a = SoftmaxNode("a", parent=root)
+    aa = SoftmaxNode("aa", parent=a)
+    ab = SoftmaxNode("ab", parent=a)
+    b = SoftmaxNode("b", parent=root)
+    ba = SoftmaxNode("ba", parent=b)
+    bb = SoftmaxNode("bb", parent=b)
+
+    targets = [aa,ba,bb, ab]
+    target_tensor = root.get_node_ids_tensor(targets)
+
+    predictions = torch.zeros( (len(targets), root.layer_size) )
+
+    # Test blank is inaccurate
+    loss_fn = PolyLoss([HierarchicalData(root=root)])
+
+    value = loss_fn(predictions, target_tensor)
+    assert value > 1.38
+
+    # Test accurate
+    for target_index, target in enumerate(targets):
+        while target.parent:
+            predictions[ target_index, target.parent.softmax_start_index + target.index_in_parent ] = 20.0
+            target = target.parent
+
+    value = loss_fn(predictions, target_tensor)
+    assert value < 0.0001
 

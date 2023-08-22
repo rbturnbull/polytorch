@@ -1,8 +1,9 @@
+import pytest
 import torch
 from tempfile import NamedTemporaryFile
 from pathlib import Path
-
-from polytorch.data import OrdinalData, ContinuousData, CategoricalData, BinaryData
+from hierarchicalsoftmax import SoftmaxNode
+from polytorch.data import OrdinalData, ContinuousData, CategoricalData, BinaryData, HierarchicalData
 from polytorch.embedding import OrdinalEmbedding, PolyEmbedding, ContinuousEmbedding
 
 
@@ -208,3 +209,17 @@ def test_plot_embedding_2d_from_object():
 
         assert output_path.exists()
         assert "<html>" in output_path.read_text()
+
+
+def test_polyembedding_hierarchical():
+    embedding_size = 8
+    root = SoftmaxNode("root")
+    a = SoftmaxNode("a", parent=root)
+    aa = SoftmaxNode("aa", parent=a)
+    ab = SoftmaxNode("ab", parent=a)
+    b = SoftmaxNode("b", parent=root)
+    ba = SoftmaxNode("ba", parent=b)
+    bb = SoftmaxNode("bb", parent=b)
+
+    with pytest.raises(NotImplementedError):
+        PolyEmbedding(embedding_size=embedding_size, input_types=[HierarchicalData(root=root)])

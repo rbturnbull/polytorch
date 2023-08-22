@@ -3,6 +3,7 @@ import abc
 from typing import List, Optional
 from attrs import define, Factory, field
 import torch.nn.functional as F
+from hierarchicalsoftmax import HierarchicalSoftmaxLoss, SoftmaxNode
 
 from .util import permute_feature_axis, squeeze_prediction
 from .enums import ContinuousLossType, BinaryLossType, CategoricalLossType
@@ -18,6 +19,7 @@ class PolyData(abc.ABC):
 
     @abc.abstractmethod
     def size(self) -> int:
+        """ The prediction size of this data type. """
         pass
 
     @abc.abstractmethod
@@ -127,4 +129,24 @@ class ContinuousData(PolyData):
     @property
     def loss_func(self):
         return getattr(F, self.loss_type.name.lower())
+
+
+@define
+class HierarchicalData(PolyData):
+    root:SoftmaxNode
+
+    def embedding_module(self, embedding_size:int) -> nn.Module:
+        raise NotImplementedError("Hierarchical data types are not yet supported for embedding.")
+
+    def size(self) -> int:
+        self.root.set_indexes_if_unset()
+        return self.root.layer_size
+    
+    def calculate_loss(self, prediction, target, feature_axis:int=-1):
+        prediction = permute_feature_axis(prediction, old_axis=feature_axis, new_axis=1)
+        return self.loss_module(prediction, target)
+
+    @property
+    def loss_module(self):
+        return HierarchicalSoftmaxLoss(root=self.root)
 
