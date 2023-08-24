@@ -1,9 +1,8 @@
 import torch
-
-from polytorch import PolyLoss, BinaryData, CategoricalData, ContinuousData, OrdinalData, HierarchicalData
-from polytorch import ContinuousLossType, BinaryLossType, CategoricalLossType
 import pytest
 from hierarchicalsoftmax import SoftmaxNode
+from polytorch import PolyLoss, BinaryData, CategoricalData, ContinuousData, OrdinalData, HierarchicalData
+from polytorch import ContinuousLossType, BinaryLossType, CategoricalLossType
 
 def test_loss_junk():
     batch_size = 5

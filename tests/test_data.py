@@ -1,4 +1,3 @@
-
 from polytorch.data import PolyData, BinaryData, CategoricalData
 import pytest
 import torch
