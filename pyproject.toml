@@ -19,7 +19,7 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.8"
-torch = "^2.0.1"
+torch = ">=1.10.2"
 future-typing = "^0.4.1"
 plotly = "^5.15.0"
 scikit-learn = "^1.0.2"
