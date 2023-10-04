@@ -16,6 +16,8 @@ class ContinuousEmbedding(nn.Module):
         self, 
         embedding_size:int,
         bias:bool=True,
+        mean:float|None=None,
+        stdev:float|None=None,
         device=None, 
         dtype=None,
         **kwargs,
@@ -23,6 +25,8 @@ class ContinuousEmbedding(nn.Module):
         super().__init__(**kwargs)    
         
         self.embedding_size = embedding_size
+        self.mean = mean
+        self.stdev = stdev
 
         factory_kwargs = {'device': device, 'dtype': dtype}
         self.weight = Parameter(torch.empty((embedding_size,), **factory_kwargs), requires_grad=True)
@@ -35,6 +39,10 @@ class ContinuousEmbedding(nn.Module):
 
     def forward(self, input):
         x = input.flatten().unsqueeze(1)
+        if self.mean is not None:
+            x = x - self.mean
+        if self.stdev is not None:
+            x = x/self.stdev
         embedded = self.bias + x * self.weight.unsqueeze(0)
         embedded = embedded.reshape(input.shape + (-1,))
 

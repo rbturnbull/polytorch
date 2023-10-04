@@ -114,16 +114,22 @@ class OrdinalData(CategoricalData):
 class ContinuousData(PolyData):
     loss_type:ContinuousLossType = ContinuousLossType.SMOOTH_L1_LOSS
     color:str = ""
+    mean:Optional[float] = None
+    stdev:Optional[float] = None
 
     def embedding_module(self, embedding_size:int) -> nn.Module:
         from .embedding import ContinuousEmbedding
-        return ContinuousEmbedding(embedding_size)
+        return ContinuousEmbedding(embedding_size, mean=self.mean, stdev=self.stdev)
 
     def size(self) -> int:
         return 1
     
     def calculate_loss(self, prediction, target, feature_axis:int=-1):
         prediction = squeeze_prediction(prediction, target, feature_axis)
+        if self.mean is not None:
+            target = target - self.mean
+        if self.stdev is not None:
+            target = target / self.stdev
         return self.loss_func(prediction, target, reduction="none")
 
     @property
