@@ -98,6 +98,8 @@ class PolyEmbedding(nn.Module):
         embedded = torch.zeros( shape, device=inputs[0].device ) 
 
         for input, module in zip(inputs, self.embedding_modules):
+            if input.dtype == torch.bool:
+                input = input.int()
             embedded += module(input)
 
         return permute_feature_axis(embedded, old_axis=-1, new_axis=self.feature_axis)
