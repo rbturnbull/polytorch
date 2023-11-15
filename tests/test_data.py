@@ -22,3 +22,11 @@ def test_categorical_data_loss_junk():
         data.calculate_loss(target, target)        
 
 
+def test_categorical_data_loss_label_smoothing_validator():
+    CategoricalData(label_smoothing=0.0, category_count=4)
+    CategoricalData(label_smoothing=1.0, category_count=4)
+    with pytest.raises(ValueError):
+        CategoricalData(label_smoothing=1.1, category_count=4)
+    with pytest.raises(ValueError):
+        CategoricalData(label_smoothing=-0.1, category_count=4)
+        

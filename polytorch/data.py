@@ -1,7 +1,7 @@
 from torch import nn
 import abc
 from typing import List, Optional
-from attrs import define, Factory, field
+from attrs import define, Factory, field, validators
 import torch.nn.functional as F
 from hierarchicalsoftmax import HierarchicalSoftmaxLoss, SoftmaxNode
 
@@ -73,6 +73,7 @@ class CategoricalData(PolyData):
     loss_type:CategoricalLossType = CategoricalLossType.CROSS_ENTROPY
     labels:Optional[List[str]] = None
     colors:Optional[List[str]] = None
+    label_smoothing:float = field(default=0.0, validator=[validators.ge(0.0), validators.le(1.0)])
 
     def embedding_module(self, embedding_size:int) -> nn.Module:
         return nn.Embedding(self.category_count, embedding_size)
@@ -87,7 +88,7 @@ class CategoricalData(PolyData):
                 prediction, 
                 target.long(), 
                 reduction="none", 
-                # label_smoothing=self.label_smoothing,
+                label_smoothing=self.label_smoothing,
             )
         elif self.loss_type == CategoricalLossType.DICE:
             from .metrics import calc_generalized_dice_score
