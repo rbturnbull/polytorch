@@ -1,5 +1,3 @@
-# -*- coding: future_typing -*-
-
 from typing import List
 
 import torch
