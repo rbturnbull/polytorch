@@ -12,6 +12,7 @@ from .enums import ContinuousLossType, BinaryLossType, CategoricalLossType
 @define(kw_only=True)
 class PolyData(abc.ABC):
     name: str = Factory(lambda self: self.__class__.__name__, takes_self=True)
+    loss_weighting: float = 1.0
 
     @abc.abstractmethod
     def embedding_module(self, embedding_size:int) -> nn.Module:
