@@ -1,13 +1,10 @@
-# -*- coding: future_typing -*-
-
 from pathlib import Path
-from .embedding import PolyEmbedding
 import plotly.graph_objects as go
 from sklearn.decomposition import PCA
 from itertools import cycle
-
 import torch
 
+from .embedding import PolyEmbedding
 from .data import CategoricalData, OrdinalData
 
 

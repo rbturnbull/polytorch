@@ -1,8 +1,9 @@
 from torch import nn
 import abc
 from typing import List, Optional
-from attrs import define, Factory, field
+from attrs import define, Factory, field, validators
 import torch.nn.functional as F
+from hierarchicalsoftmax import HierarchicalSoftmaxLoss, SoftmaxNode
 
 from .util import permute_feature_axis, squeeze_prediction
 from .enums import ContinuousLossType, BinaryLossType, CategoricalLossType
@@ -11,6 +12,7 @@ from .enums import ContinuousLossType, BinaryLossType, CategoricalLossType
 @define(kw_only=True)
 class PolyData(abc.ABC):
     name: str = Factory(lambda self: self.__class__.__name__, takes_self=True)
+    loss_weighting: float = 1.0
 
     @abc.abstractmethod
     def embedding_module(self, embedding_size:int) -> nn.Module:
@@ -18,6 +20,7 @@ class PolyData(abc.ABC):
 
     @abc.abstractmethod
     def size(self) -> int:
+        """ The prediction size of this data type. """
         pass
 
     @abc.abstractmethod
@@ -71,6 +74,7 @@ class CategoricalData(PolyData):
     loss_type:CategoricalLossType = CategoricalLossType.CROSS_ENTROPY
     labels:Optional[List[str]] = None
     colors:Optional[List[str]] = None
+    label_smoothing:float = field(default=0.0, validator=[validators.ge(0.0), validators.le(1.0)])
 
     def embedding_module(self, embedding_size:int) -> nn.Module:
         return nn.Embedding(self.category_count, embedding_size)
@@ -85,7 +89,7 @@ class CategoricalData(PolyData):
                 prediction, 
                 target.long(), 
                 reduction="none", 
-                # label_smoothing=self.label_smoothing,
+                label_smoothing=self.label_smoothing,
             )
         elif self.loss_type == CategoricalLossType.DICE:
             from .metrics import calc_generalized_dice_score
@@ -112,19 +116,45 @@ class OrdinalData(CategoricalData):
 class ContinuousData(PolyData):
     loss_type:ContinuousLossType = ContinuousLossType.SMOOTH_L1_LOSS
     color:str = ""
+    mean:Optional[float] = None
+    stdev:Optional[float] = None
 
     def embedding_module(self, embedding_size:int) -> nn.Module:
         from .embedding import ContinuousEmbedding
-        return ContinuousEmbedding(embedding_size)
+        return ContinuousEmbedding(embedding_size, mean=self.mean, stdev=self.stdev)
 
     def size(self) -> int:
         return 1
     
     def calculate_loss(self, prediction, target, feature_axis:int=-1):
         prediction = squeeze_prediction(prediction, target, feature_axis)
+        if self.mean is not None:
+            target = target - self.mean
+        if self.stdev is not None:
+            target = target / self.stdev
         return self.loss_func(prediction, target, reduction="none")
 
     @property
     def loss_func(self):
         return getattr(F, self.loss_type.name.lower())
+
+
+@define
+class HierarchicalData(PolyData):
+    root:SoftmaxNode
+
+    def embedding_module(self, embedding_size:int) -> nn.Module:
+        raise NotImplementedError("Hierarchical data types are not yet supported for embedding.")
+
+    def size(self) -> int:
+        self.root.set_indexes_if_unset()
+        return self.root.layer_size
+    
+    def calculate_loss(self, prediction, target, feature_axis:int=-1):
+        prediction = permute_feature_axis(prediction, old_axis=feature_axis, new_axis=1)
+        return self.loss_module(prediction, target)
+
+    @property
+    def loss_module(self):
+        return HierarchicalSoftmaxLoss(root=self.root)
 

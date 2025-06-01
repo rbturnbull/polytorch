@@ -1,5 +1,8 @@
+from attrs import define, Factory
 import torch
 import torch.nn.functional as F
+from typing import Optional
+from hierarchicalsoftmax import SoftmaxNode, greedy_accuracy
 
 from .util import squeeze_prediction
 
@@ -10,6 +13,7 @@ def get_predictions_target_for_index(predictions, *targets, data_index=None, fea
 
     assert len(predictions) == len(targets)
     assert data_index is not None, "data_index must be specified"
+    assert data_index >= 0, "data_index must be non-negative"
 
     my_predictions = predictions[data_index]
     my_targets = targets[data_index]
@@ -47,6 +51,51 @@ def mse(predictions, *targets, data_index=None, feature_axis=-1) -> torch.Tensor
 def l1(predictions, *targets, data_index=None, feature_axis=-1) -> torch.Tensor:
     return function_metric(predictions, *targets, data_index=data_index, feature_axis=feature_axis, function=F.l1_loss)
 
+
+@define(kw_only=True)
+class PolyMetric():
+    data_index:int
+    feature_axis:int = -1
+    function:Optional[callable] = None
+    name:str = Factory(lambda self:self.default_name(), takes_self=True)
+
+    def default_name(self):
+        if self.function:
+            return self.function.__name__
+        return self.__class__.__name__
+
+    @property
+    def __name__(self):
+        """ For using as a FastAI metric. """
+        return self.name
+    
+    def __call__(self, predictions, *targets):
+        my_predictions, my_targets = get_predictions_target_for_index(predictions, *targets, data_index=self.data_index, feature_axis=self.feature_axis)
+        my_predictions = squeeze_prediction(my_predictions, my_targets, self.feature_axis)
+
+        return self.calc(my_predictions, my_targets)
+    
+    def calc(self, predictions, targets):
+        if self.function:
+            return self.function(predictions, targets)
+        
+        raise NotImplementedError(f"No function given. Either implement calc or provide a function to {self.name}")
+
+
+@define
+class HierarchicalGreedyAccuracy(PolyMetric):
+    root:SoftmaxNode
+    max_depth:Optional[int]=None
+
+    def calc(self, predictions, targets):
+        return greedy_accuracy(predictions, targets, self.root, max_depth=self.max_depth)
+
+
+class CategoricalAccuracy(PolyMetric):
+    def calc(self, predictions, targets):
+        predictions = torch.max(predictions, dim=self.feature_axis).indices # should be argmax but there is an issue using MPS
+        return (predictions == targets).float().mean()
+    
 
 def smooth_l1(predictions, *targets, data_index=None, feature_axis=-1) -> torch.Tensor:
     return function_metric(predictions, *targets, data_index=data_index, feature_axis=feature_axis, function=F.smooth_l1_loss)
@@ -122,7 +171,6 @@ def generalized_dice(predictions, *targets, data_index=None, feature_axis=-1, pe
     """
     Calculate the generalized dice score for a single data index. Used for for multi-class segmentation.
 
-
     See:
         - https://www.sciencedirect.com/science/article/pii/S2590005619300049#bib73
         - https://arxiv.org/pdf/1707.03237.pdf
@@ -152,5 +200,4 @@ def generalized_dice(predictions, *targets, data_index=None, feature_axis=-1, pe
         power=power,
     )
     return score
-
-
+    

@@ -1,5 +1,3 @@
-# -*- coding: future_typing -*-
-
 from typing import List
 
 import torch
@@ -16,6 +14,8 @@ class ContinuousEmbedding(nn.Module):
         self, 
         embedding_size:int,
         bias:bool=True,
+        mean:float|None=None,
+        stdev:float|None=None,
         device=None, 
         dtype=None,
         **kwargs,
@@ -23,6 +23,8 @@ class ContinuousEmbedding(nn.Module):
         super().__init__(**kwargs)    
         
         self.embedding_size = embedding_size
+        self.mean = mean
+        self.stdev = stdev
 
         factory_kwargs = {'device': device, 'dtype': dtype}
         self.weight = Parameter(torch.empty((embedding_size,), **factory_kwargs), requires_grad=True)
@@ -35,6 +37,10 @@ class ContinuousEmbedding(nn.Module):
 
     def forward(self, input):
         x = input.flatten().unsqueeze(1)
+        if self.mean is not None:
+            x = x - self.mean
+        if self.stdev is not None:
+            x = x/self.stdev
         embedded = self.bias + x * self.weight.unsqueeze(0)
         embedded = embedded.reshape(input.shape + (-1,))
 
@@ -98,6 +104,8 @@ class PolyEmbedding(nn.Module):
         embedded = torch.zeros( shape, device=inputs[0].device ) 
 
         for input, module in zip(inputs, self.embedding_modules):
+            if input.dtype == torch.bool:
+                input = input.int()
             embedded += module(input)
 
         return permute_feature_axis(embedded, old_axis=-1, new_axis=self.feature_axis)
