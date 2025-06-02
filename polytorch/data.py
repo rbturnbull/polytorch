@@ -12,7 +12,19 @@ from .enums import ContinuousLossType, BinaryLossType, CategoricalLossType
 @define(kw_only=True)
 class PolyData(abc.ABC):
     name: str = Factory(lambda self: self.__class__.__name__, takes_self=True)
-    loss_weighting: float = 1.0
+    loss_weighting: float = field(default=1.0)
+
+    def __setstate__(self, state):
+        # Handle (super_state, our_state) tuple pattern
+        if isinstance(state, tuple) and len(state) == 2:
+            _, actual_state = state
+        else:
+            actual_state = state
+
+        for k, v in actual_state.items():
+            setattr(self, k, v)
+        if not hasattr(self, "loss_weighting"):
+            self.loss_weighting = 1.0
 
     @abc.abstractmethod
     def embedding_module(self, embedding_size:int) -> nn.Module:
@@ -67,6 +79,9 @@ class BinaryData(PolyData):
         
         raise NotImplementedError(f"Unknown loss type: {self.loss_type} for {self.__class__.__name__}")
 
+    def __setstate__(self, state):
+        super().__setstate__(state)
+
 
 @define
 class CategoricalData(PolyData):
@@ -101,6 +116,9 @@ class CategoricalData(PolyData):
         
         raise NotImplementedError(f"Unknown loss type: {self.loss_type} for {self.__class__.__name__}")
 
+    def __setstate__(self, state):
+        super().__setstate__(state)
+        
 
 @define
 class OrdinalData(CategoricalData):
@@ -110,6 +128,9 @@ class OrdinalData(CategoricalData):
     def embedding_module(self, embedding_size:int) -> nn.Module:
         from .embedding import OrdinalEmbedding
         return OrdinalEmbedding(self.category_count, embedding_size)
+
+    def __setstate__(self, state):
+        super().__setstate__(state)
 
 
 @define
@@ -138,6 +159,9 @@ class ContinuousData(PolyData):
     def loss_func(self):
         return getattr(F, self.loss_type.name.lower())
 
+    def __setstate__(self, state):
+        super().__setstate__(state)
+
 
 @define
 class HierarchicalData(PolyData):
@@ -158,3 +182,5 @@ class HierarchicalData(PolyData):
     def loss_module(self):
         return HierarchicalSoftmaxLoss(root=self.root)
 
+    def __setstate__(self, state):
+        super().__setstate__(state)
