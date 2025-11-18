@@ -129,7 +129,7 @@ class CategoricalData(PolyData):
         
     @classmethod
     def from_series(cls, name:str, series) -> "PolyData":
-        return cls(name=name, category_count=series.nunique())
+        return cls(name=name, category_count=series.nunique()), series.values
 
 
 @define
@@ -202,5 +202,5 @@ class HierarchicalData(PolyData):
         root = None
         breakpoint()
         raise NotImplementedError("HierarchicalData.from_series is not yet implemented.")
-        return cls(name=name, root=root)
+        return cls(name=name, root=root), node_ids
         

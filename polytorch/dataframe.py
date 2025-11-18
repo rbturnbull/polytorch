@@ -1,6 +1,8 @@
 import pandas as pd
 from pathlib import Path
 
+from . import data as data_module
+
 class PolyDataFrame:
     def __init__(self, csv:Path|pd.DataFrame):
         self.pandas_df = pd.read_csv(csv) if isinstance(csv, Path) else csv
@@ -14,14 +16,16 @@ class PolyDataFrame:
                 name, type_str = components
                 
                 name = name.strip()
-                type_str = type_str.title().strip()
+                
+                # Make first letter uppercase to match class names
+                type_str = type_str.strip()
+                type_str = type_str[0].upper() + type_str[1:]
+
                 if not type_str.endswith("Data"):
                     type_str += "Data"
 
-                try:
-                    from .data import globals as data_globals
-                    data_type_class = getattr(data_globals, type_str)
-                except AttributeError:
+                data_type_class = getattr(data_module, type_str, None)
+                if data_type_class is None:
                     raise ValueError(f"Unknown data type '{type_str}' for column '{name}'")
                 
                 data_type, getter = data_type_class.from_series(name, self.pandas_df[col])

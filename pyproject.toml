@@ -25,6 +25,7 @@ scikit-learn = ">=1.0.2"
 kaleido = "=0.2.1"
 attrs = ">=19"
 hierarchicalsoftmax = ">=1.4.1"
+pandas = "^2.3.3"
 
 [tool.poetry.group.dev.dependencies]
 pytest = ">=6.2.5"
