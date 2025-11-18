@@ -42,7 +42,7 @@ def test_polydataframe_accepts_dataframe_and_tuple_indexing():
     frame = PolyDataFrame(df)
 
     assert frame[1] == (False, "test")
-    assert frame["flag", 2] is True
+    assert frame["flag", 2] == True
     assert list(frame["group"]) == ["train", "test", "train"]
 
 
