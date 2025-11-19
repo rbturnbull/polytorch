@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 from pathlib import Path
 
@@ -36,7 +37,7 @@ class PolyDataFrame:
         return len(self.pandas_df)
     
     def __getitem__(self, idx) -> tuple:
-        if isinstance(idx, int):
+        if isinstance(idx, (int, np.integer)):
             return tuple(getter[idx] for getter in self.getters.values())
         
         if isinstance(idx, str):
