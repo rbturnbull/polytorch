@@ -205,13 +205,20 @@ class HierarchicalData(PolyData):
         nodes = []
 
         for item in series:
-            components = tuple(name.strip() for name in item.split(delimiter))
+            components = tuple(
+                component.strip()
+                for component in str(item).split(delimiter)
+                if component.strip()
+            )
+
+            if not components:
+                raise ValueError(f"Invalid hierarchical entry '{item}' for '{name}'.")
 
             current_node = None
-            for component_index in range(len(components)):
+            for component_index, component in enumerate(components):
                 my_lineage = tuple(components[:component_index + 1])
                 if my_lineage not in lineage_to_node:
-                    lineage_to_node[my_lineage] = SoftmaxNode(name=name, parent=current_node)
+                    lineage_to_node[my_lineage] = SoftmaxNode(name=component, parent=current_node)
                     if current_node is None:
                         roots.append(lineage_to_node[my_lineage])
                 current_node = lineage_to_node[my_lineage]
@@ -228,7 +235,7 @@ class HierarchicalData(PolyData):
             raise ValueError("No data found to build HierarchicalData.")
 
         root.set_indexes_if_unset()
-        node_ids = [node.index for node in nodes]
+        node_ids = [root.node_to_id[node] for node in nodes]
 
         return cls(name=name, root=root), node_ids
         
