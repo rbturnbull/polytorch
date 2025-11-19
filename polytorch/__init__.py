@@ -4,3 +4,4 @@ from .loss import PolyLoss
 from .enums import ContinuousLossType, CategoricalLossType, BinaryLossType
 from .modules import PolyLinear, PolyLazyLinear
 from .util import split_tensor, total_size
+from .dataframe import PolyDataFrame
