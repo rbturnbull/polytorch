@@ -3,11 +3,45 @@ from pathlib import Path
 import pandas as pd
 import pytest
 
-from polytorch.data import BinaryData, CategoricalData, ContinuousData
+from polytorch.data import BinaryData, CategoricalData, ContinuousData, HierarchicalData
 from polytorch.dataframe import PolyDataFrame
 
 
 TEST_DATA_DIR = Path(__file__).parent / "test-data"
+
+
+def test_poly_dataframe_hierarchical():
+    frame = PolyDataFrame(TEST_DATA_DIR / "poly_dataframe_hierarchical.csv")
+
+    assert len(frame) == 6
+    assert isinstance(frame.data_types[0], HierarchicalData)
+    assert isinstance(frame.data_types[1], ContinuousData)
+    assert [dt.name for dt in frame.data_types] == ["tree", "score"]
+
+    hierarchical = frame.data_types[0]
+    assert isinstance(hierarchical, HierarchicalData)
+    root = hierarchical.root
+    assert root.render_equal("""
+        __root__
+        ├── Animal
+        │   ├── Eagle
+        │   └── Bird
+        ├── Vegetable
+        │   ├── Tree
+        │   └── Wheat
+        └── Mineral
+            ├── Rock
+            └── Gold
+    """)
+    assert root.name == "__root__"
+    assert len(root.children) == 3  # Animal, Vegetable, Mineral
+
+    assert frame["tree"] == [3, 4, 5, 6, 7, 8]
+    assert frame[0] == (3, pytest.approx(0.25))
+    assert frame[1] == (4, pytest.approx(0.3))
+    assert list(frame["partition"]) == [0, 0, 1, 0, 0, 0]
+    assert list(frame["score"]) == [0.25, 0.3, 0.3, 0.9, 0.9, 0.9]
+    assert list(frame["score:continuous"]) == [0.25, 0.3, 0.3, 0.9, 0.9, 0.9]
 
 
 def test_polydataframe_from_csv_parses_types_and_values():
