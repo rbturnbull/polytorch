@@ -199,8 +199,36 @@ class HierarchicalData(PolyData):
 
     @classmethod
     def from_series(cls, name:str, series) -> "PolyData":
-        root = None
-        breakpoint()
-        raise NotImplementedError("HierarchicalData.from_series is not yet implemented.")
+        lineage_to_node = {}
+        roots = []
+        delimiter = "/"
+        nodes = []
+
+        for item in series:
+            components = tuple(name.strip() for name in item.split(delimiter))
+
+            current_node = None
+            for component_index in range(len(components)):
+                my_lineage = tuple(components[:component_index + 1])
+                if my_lineage not in lineage_to_node:
+                    lineage_to_node[my_lineage] = SoftmaxNode(name=name, parent=current_node)
+                    if current_node is None:
+                        roots.append(lineage_to_node[my_lineage])
+                current_node = lineage_to_node[my_lineage]
+        
+            nodes.append(current_node)
+        
+        assert len(nodes) == len(series)
+
+        if len(roots) > 1:
+            root = SoftmaxNode(name="__root__", parent=None, children=roots)
+        elif len(roots) == 1:
+            root = roots[0]
+        else:   
+            raise ValueError("No data found to build HierarchicalData.")
+
+        root.set_indexes_if_unset()
+        node_ids = [node.index for node in nodes]
+
         return cls(name=name, root=root), node_ids
         
