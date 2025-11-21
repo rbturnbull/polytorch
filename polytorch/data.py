@@ -12,6 +12,7 @@ from .enums import ContinuousLossType, BinaryLossType, CategoricalLossType
 class Getter(Protocol):
     def __getitem__(self, key: int) -> Any: ...
 
+DELIMITER = "→"
 
 @define(kw_only=True)
 class PolyData(abc.ABC):
@@ -201,13 +202,12 @@ class HierarchicalData(PolyData):
     def from_series(cls, name:str, series) -> "PolyData":
         lineage_to_node = {}
         roots = []
-        delimiter = "/"
         nodes = []
 
         for item in series:
             components = tuple(
                 component.strip()
-                for component in str(item).split(delimiter)
+                for component in str(item).split(DELIMITER)
                 if component.strip()
             )
 
