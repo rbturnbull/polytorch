@@ -16,7 +16,7 @@ class Getter(Protocol):
 
     def __getitem__(self, key: int) -> Any:
         """Return the value at the given row index."""
-        ...
+        pass
 
 
 DELIMITER = "/"

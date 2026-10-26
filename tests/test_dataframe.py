@@ -85,3 +85,40 @@ def test_polydataframe_unknown_type_raises_value_error():
         PolyDataFrame(TEST_DATA_DIR / "poly_dataframe_unknown.csv")
 
     assert "Unknown data type 'MysteryData' for column 'value'" in str(excinfo.value)
+
+
+def test_polydataframe_selects_columns_in_source_order():
+    import numpy as np
+
+    frame = PolyDataFrame(pd.DataFrame({
+        "flag:binary": [True, False],
+        "unused:Mystery": ["ignored", "ignored"],
+        "score:continuous": [0.25, 0.75],
+    }), data_columns={"score", "flag"})
+    assert [data_type.name for data_type in frame.data_types] == ["flag", "score"]
+    assert frame[np.int64(1)] == (False, 0.75)
+    assert set(frame.getters) == {"flag", "score"}
+
+
+def test_polydataframe_rejects_missing_requested_columns():
+    with pytest.raises(ValueError, match="Missing columns from dataframe: missing"):
+        PolyDataFrame(pd.DataFrame({"score:continuous": [0.25]}), data_columns={"score", "missing"})
+
+
+@pytest.mark.parametrize("key", ["unknown", 1.5, None])
+def test_polydataframe_rejects_invalid_keys(key):
+    frame = PolyDataFrame(pd.DataFrame({"score:continuous": [0.25]}))
+    with pytest.raises(KeyError):
+        frame[key]
+
+
+@pytest.mark.parametrize("key", [("score",), ("score", 0, 1)])
+def test_polydataframe_rejects_invalid_tuple_keys(key):
+    frame = PolyDataFrame(pd.DataFrame({"score:continuous": [0.25]}))
+    with pytest.raises(AssertionError, match="Tuple indexing"):
+        frame[key]
+
+
+def test_polydataframe_rejects_multiple_colons_in_header():
+    with pytest.raises(AssertionError, match="multiple ':'"):
+        PolyDataFrame(pd.DataFrame({"score:continuous:extra": [0.25]}))

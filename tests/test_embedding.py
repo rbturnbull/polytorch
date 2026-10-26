@@ -245,3 +245,13 @@ def test_polyembedding_hierarchical():
 
     with pytest.raises(NotImplementedError):
         PolyEmbedding(embedding_size=embedding_size, input_types=[HierarchicalData(root=root)])
+
+
+def test_polyembedding_boolean_inputs_match_integer_inputs():
+    embedding = PolyEmbedding(input_types=[BinaryData()], embedding_size=4)
+    values = torch.tensor([False, True, True, False])
+    result = embedding(values)
+    assert result.shape == (4, 4)
+    torch.testing.assert_close(result, embedding(values.long()))
+    torch.testing.assert_close(result[0], result[3])
+    torch.testing.assert_close(result[1], result[2])
