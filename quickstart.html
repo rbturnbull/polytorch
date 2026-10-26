@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quickstart &mdash; PolyTorch 0.1.0 documentation</title>
+  <title>Quickstart &mdash; PolyTorch 0.2.2 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -14,7 +14,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=01f34227"></script>
+      <script src="_static/documentation_options.js?v=000c92bf"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -59,6 +59,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#embedding-your-data">Embedding your data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#outputting-your-data">Outputting your data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dataframes">DataFrames</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API Reference</a></li>
@@ -94,7 +95,7 @@
 <p>Embeddings and loss functions for different data types.</p>
 <section id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
-<p>Install using pip:</p>
+<p>Requires Python 3.10 or later. Install using pip:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>polytorch
 </pre></div>
 </div>
@@ -102,10 +103,15 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/rbturnbull/polytorch.git
 </pre></div>
 </div>
+<p>Static image export uses Kaleido 1.x and requires Chrome or Chromium.
+If no compatible browser is installed, install one with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>plotly_get_chrome
+</pre></div>
+</div>
 </section>
 <section id="data-types">
 <h2>Data Types<a class="headerlink" href="#data-types" title="Link to this heading"></a></h2>
-<p>This package allow you to input and output different data types in PyTorch models.</p>
+<p>This package allows you to input and output different data types in PyTorch models.</p>
 <section id="binary-data">
 <h3>Binary Data<a class="headerlink" href="#binary-data" title="Link to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">polytorch</span><span class="w"> </span><span class="kn">import</span> <span class="n">BinaryData</span>
@@ -113,7 +119,7 @@
 <span class="n">binary_data</span> <span class="o">=</span> <span class="n">BinaryData</span><span class="p">()</span>
 
 <span class="c1"># Or with labels and colors</span>
-<span class="n">binary_data</span> <span class="o">=</span> <span class="n">BinaryData</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;no_feature&quot;</span><span class="p">,</span> <span class="s2">&quot;with_feature&quot;</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">])</span>
+<span class="n">binary_data</span> <span class="o">=</span> <span class="n">BinaryData</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;no_feature&quot;</span><span class="p">,</span> <span class="s2">&quot;with_feature&quot;</span><span class="p">],</span> <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
 </section>
@@ -138,10 +144,10 @@
 <h3>Ordinal Data<a class="headerlink" href="#ordinal-data" title="Link to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">polytorch</span><span class="w"> </span><span class="kn">import</span> <span class="n">OrdinalData</span>
 
-<span class="n">ordinal_data</span> <span class="o">=</span> <span class="n">OrdinalData</span><span class="p">()</span>
+<span class="n">ordinal_data</span> <span class="o">=</span> <span class="n">OrdinalData</span><span class="p">(</span><span class="n">category_count</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 
 <span class="c1"># Or with color</span>
-<span class="n">ordinal_data</span> <span class="o">=</span> <span class="n">OrdinalData</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;pink&quot;</span><span class="p">)</span>
+<span class="n">ordinal_data</span> <span class="o">=</span> <span class="n">OrdinalData</span><span class="p">(</span><span class="n">category_count</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;pink&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -159,7 +165,7 @@
 <section id="hierarchical-data">
 <h3>Hierarchical Data<a class="headerlink" href="#hierarchical-data" title="Link to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">polytorch</span><span class="w"> </span><span class="kn">import</span> <span class="n">HierarchicalData</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">hiearchicalsoftmax</span><span class="w"> </span><span class="kn">import</span> <span class="n">SoftmaxNode</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">hierarchicalsoftmax</span><span class="w"> </span><span class="kn">import</span> <span class="n">SoftmaxNode</span>
 
 <span class="n">root</span> <span class="o">=</span> <span class="n">SoftmaxNode</span><span class="p">(</span><span class="s2">&quot;root&quot;</span><span class="p">)</span>
 <span class="n">child1</span> <span class="o">=</span> <span class="n">SoftmaxNode</span><span class="p">(</span><span class="s2">&quot;child1&quot;</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">root</span><span class="p">)</span>
@@ -173,12 +179,24 @@
 <span class="n">hierarchical_data</span> <span class="o">=</span> <span class="n">HierarchicalData</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>Build a hierarchy from slash-separated paths with <code class="docutils literal notranslate"><span class="pre">from_series</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">hierarchical_data</span><span class="p">,</span> <span class="n">node_ids</span> <span class="o">=</span> <span class="n">HierarchicalData</span><span class="o">.</span><span class="n">from_series</span><span class="p">(</span>
+    <span class="s2">&quot;taxonomy&quot;</span><span class="p">,</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">&quot;Animal/Mammal/Dog&quot;</span><span class="p">,</span> <span class="s2">&quot;Animal/Bird/Eagle&quot;</span><span class="p">,</span> <span class="s2">&quot; Animal / Mammal / Dog &quot;</span><span class="p">]),</span>
+<span class="p">)</span>
+<span class="k">assert</span> <span class="n">node_ids</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">node_ids</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Whitespace around each path component is stripped. Shared paths reuse nodes.
+Multiple top-level names are joined under a virtual <code class="docutils literal notranslate"><span class="pre">__root__</span></code> node.</p>
 </section>
 </section>
 <section id="embedding-your-data">
 <h2>Embedding your data<a class="headerlink" href="#embedding-your-data" title="Link to this heading"></a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">torch</span><span class="w"> </span><span class="kn">import</span> <span class="n">nn</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">polytorch</span><span class="w"> </span><span class="kn">import</span> <span class="n">Embedding</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">polytorch</span><span class="w"> </span><span class="kn">import</span> <span class="n">PolyEmbedding</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">MyModule</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">embedding_size</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">128</span><span class="p">):</span>
@@ -229,15 +247,41 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Then add set this as the loss:</p>
+<p>Use these data types to configure the loss:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">polytorch</span><span class="w"> </span><span class="kn">import</span> <span class="n">PolyLoss</span>
 
-<span class="n">loss_module</span> <span class="o">=</span> <span class="n">PolyLoss</span><span class="p">(</span><span class="n">output_types</span><span class="o">=</span><span class="n">output_types</span><span class="p">)</span>
+<span class="n">loss_module</span> <span class="o">=</span> <span class="n">PolyLoss</span><span class="p">(</span><span class="n">data_types</span><span class="o">=</span><span class="n">output_types</span><span class="p">)</span>
 
 <span class="c1"># In your training loop</span>
 <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_module</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span> <span class="n">categorical_target</span><span class="p">,</span> <span class="n">binary_target</span><span class="p">,</span> <span class="n">continuous_target</span><span class="p">)</span>
 </pre></div>
 </div>
+</section>
+<section id="dataframes">
+<h2>DataFrames<a class="headerlink" href="#dataframes" title="Link to this heading"></a></h2>
+<p>Use <code class="docutils literal notranslate"><span class="pre">PolyDataFrame</span></code> with a pandas dataframe or a CSV file supplied as a
+<code class="docutils literal notranslate"><span class="pre">pathlib.Path</span></code>. Annotate columns as <code class="docutils literal notranslate"><span class="pre">name:type</span></code>; unannotated columns are
+available by name but are omitted from row tuples and <code class="docutils literal notranslate"><span class="pre">data_types</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">polytorch</span><span class="w"> </span><span class="kn">import</span> <span class="n">PolyDataFrame</span>
+
+<span class="n">frame</span> <span class="o">=</span> <span class="n">PolyDataFrame</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">101</span><span class="p">],</span>
+    <span class="s2">&quot;tree:Hierarchical&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Animal/Dog&quot;</span><span class="p">,</span> <span class="s2">&quot;Animal/Cat&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;score:continuous&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">],</span>
+<span class="p">}))</span>
+<span class="n">tree_id</span><span class="p">,</span> <span class="n">score</span> <span class="o">=</span> <span class="n">frame</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">score</span> <span class="o">==</span> <span class="mf">0.25</span>
+<span class="k">assert</span> <span class="n">frame</span><span class="p">[</span><span class="s2">&quot;score&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.75</span>
+<span class="k">assert</span> <span class="n">frame</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">100</span>
+<span class="k">assert</span> <span class="p">[</span><span class="n">data_type</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">data_type</span> <span class="ow">in</span> <span class="n">frame</span><span class="o">.</span><span class="n">data_types</span><span class="p">]</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;tree&quot;</span><span class="p">,</span> <span class="s2">&quot;score&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Types accept an optional <code class="docutils literal notranslate"><span class="pre">Data</span></code> suffix (for example, <code class="docutils literal notranslate"><span class="pre">ContinuousData</span></code>).
+Use <code class="docutils literal notranslate"><span class="pre">data_columns={&quot;score&quot;}</span></code> to select annotated columns by name. Row tuples
+and <code class="docutils literal notranslate"><span class="pre">data_types</span></code> follow the original column order. Categorical and ordinal
+values are returned unchanged; supply integer category indices for use with
+embeddings and cross-entropy loss.</p>
 </section>
 </section>
 

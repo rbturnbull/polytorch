@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>API Reference &mdash; PolyTorch 0.1.0 documentation</title>
+  <title>API Reference &mdash; PolyTorch 0.2.2 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -14,7 +14,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=01f34227"></script>
+      <script src="_static/documentation_options.js?v=000c92bf"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -68,6 +68,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#polytorch.data.ContinuousData.size"><code class="docutils literal notranslate"><span class="pre">ContinuousData.size()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#polytorch.data.Getter"><code class="docutils literal notranslate"><span class="pre">Getter</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#polytorch.data.HierarchicalData"><code class="docutils literal notranslate"><span class="pre">HierarchicalData</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#polytorch.data.HierarchicalData.size"><code class="docutils literal notranslate"><span class="pre">HierarchicalData.size()</span></code></a></li>
 </ul>
@@ -79,6 +80,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#module-polytorch.dataframe">DataFrames</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-polytorch.embedding">Embedding</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#polytorch.embedding.ContinuousEmbedding"><code class="docutils literal notranslate"><span class="pre">ContinuousEmbedding</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#polytorch.embedding.ContinuousEmbedding.forward"><code class="docutils literal notranslate"><span class="pre">ContinuousEmbedding.forward()</span></code></a></li>
@@ -209,6 +211,11 @@
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="polytorch.data.Getter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">polytorch.data.</span></span><span class="sig-name descname"><span class="pre">Getter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.data.Getter" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="polytorch.data.HierarchicalData">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">polytorch.data.</span></span><span class="sig-name descname"><span class="pre">HierarchicalData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SoftmaxNode</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">NOTHING</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_weighting</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.data.HierarchicalData" title="Link to this definition"></a></dt>
 <dd><dl class="py method">
@@ -235,6 +242,9 @@
 
 </dd></dl>
 
+</section>
+<section id="module-polytorch.dataframe">
+<span id="dataframes"></span><h2>DataFrames<a class="headerlink" href="#module-polytorch.dataframe" title="Link to this heading"></a></h2>
 </section>
 <section id="module-polytorch.embedding">
 <span id="embedding"></span><h2>Embedding<a class="headerlink" href="#module-polytorch.embedding" title="Link to this heading"></a></h2>
