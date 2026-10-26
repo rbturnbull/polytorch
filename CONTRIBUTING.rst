@@ -59,3 +59,27 @@ Try not to have any other sections within this but if it is necessary, use tilda
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Other information for using reStructuredText in Sphinx can be found here: https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#rst-primer and https://thomas-cokelaer.info/tutorials/sphinx/rest_syntax.html.
+
+Preparing a release
+==================
+
+Install the development environment with ``poetry install``. Static image
+export tests require Chrome or Chromium; install a compatible browser with
+``poetry run plotly_get_chrome`` if necessary.
+
+Before tagging a release:
+
+- Update the version in ``pyproject.toml`` and prepare GitHub release notes,
+  including changes to dependencies and hierarchy path parsing.
+- Run ``poetry check --lock`` and ``poetry run pytest``.
+- Build the docs with ``poetry run sphinx-build -W --keep-going -b html docs docs/_build/html``.
+- Run ``poetry build`` and check the wheel and source distribution metadata
+  with ``pipx run twine check dist/*``.
+- Wait for GitHub Actions checks to pass and verify that the repository's
+  ``PYPI_TOKEN`` secret is configured for publishing.
+- Commit the release changes, then create and push a tag matching the version
+  (for example, ``v0.2.2``). Pushing a version tag runs validation, builds the
+  distributions, and publishes to PyPI automatically.
+
+The docs workflow also uses ``GIST_SECRET`` to update the coverage badge.
+Documentation displays the installed package version automatically.

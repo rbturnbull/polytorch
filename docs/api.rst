@@ -17,6 +17,12 @@ Data
     :members:
     
 
+DataFrames
+=======================
+
+.. automodule:: polytorch.dataframe
+    :members:
+
 Embedding
 =======================
 

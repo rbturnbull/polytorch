@@ -31,7 +31,7 @@ Embeddings and loss functions for different data types.
 Installation
 ==================================
 
-Install using pip:
+Requires Python 3.10 or later. Install using pip:
 
 .. code-block:: bash
 
@@ -44,10 +44,17 @@ Or install the latest version from GitHub:
     pip install git+https://github.com/rbturnbull/polytorch.git
 
 
+Static image export uses Kaleido 1.x and requires Chrome or Chromium.
+If no compatible browser is installed, install one with:
+
+.. code-block:: bash
+
+    plotly_get_chrome
+
 Data Types
 ==================================
 
-This package allow you to input and output different data types in PyTorch models.
+This package allows you to input and output different data types in PyTorch models.
 
 Binary Data
 ----------------------------------------
@@ -59,7 +66,7 @@ Binary Data
     binary_data = BinaryData()
 
     # Or with labels and colors
-    binary_data = BinaryData(labels=["no_feature", "with_feature", colors=["red", "blue"])
+    binary_data = BinaryData(labels=["no_feature", "with_feature"], colors=["red", "blue"])
 
 Categorical Data
 ----------------------------------------
@@ -86,10 +93,10 @@ Ordinal Data
 
     from polytorch import OrdinalData
 
-    ordinal_data = OrdinalData()
+    ordinal_data = OrdinalData(category_count=5)
     
     # Or with color
-    ordinal_data = OrdinalData(color="pink")
+    ordinal_data = OrdinalData(category_count=5, color="pink")
     
 Continuous Data
 ----------------------------------------
@@ -111,7 +118,7 @@ Hierarchical Data
 .. code-block:: python
 
     from polytorch import HierarchicalData
-    from hiearchicalsoftmax import SoftmaxNode
+    from hierarchicalsoftmax import SoftmaxNode
 
     root = SoftmaxNode("root")
     child1 = SoftmaxNode("child1", parent=root)
@@ -123,6 +130,21 @@ Hierarchical Data
     
     
     hierarchical_data = HierarchicalData(root)
+
+Build a hierarchy from slash-separated paths with ``from_series``:
+
+.. code-block:: python
+
+    import pandas as pd
+
+    hierarchical_data, node_ids = HierarchicalData.from_series(
+        "taxonomy",
+        pd.Series(["Animal/Mammal/Dog", "Animal/Bird/Eagle", " Animal / Mammal / Dog "]),
+    )
+    assert node_ids[0] == node_ids[2]
+
+Whitespace around each path component is stripped. Shared paths reuse nodes.
+Multiple top-level names are joined under a virtual ``__root__`` node.
     
 Embedding your data
 ==================================
@@ -130,7 +152,7 @@ Embedding your data
 .. code-block:: python
 
     from torch import nn
-    from polytorch import Embedding
+    from polytorch import PolyEmbedding
     
     class MyModule(nn.Module):
         def __init__(self, embedding_size:int=128):
@@ -182,16 +204,46 @@ You can also get your model to output to different data types.
             # Output to different data types
             return self.output(x)
 
-Then add set this as the loss:
+Use these data types to configure the loss:
 
 .. code-block:: python
 
     from polytorch import PolyLoss
 
-    loss_module = PolyLoss(output_types=output_types)
+    loss_module = PolyLoss(data_types=output_types)
 
     # In your training loop
     loss = loss_module(predictions, categorical_target, binary_target, continuous_target)
+
+DataFrames
+====================
+
+Use ``PolyDataFrame`` with a pandas dataframe or a CSV file supplied as a
+``pathlib.Path``. Annotate columns as ``name:type``; unannotated columns are
+available by name but are omitted from row tuples and ``data_types``.
+
+.. code-block:: python
+
+    import pandas as pd
+    from polytorch import PolyDataFrame
+
+    frame = PolyDataFrame(pd.DataFrame({
+        "id": [100, 101],
+        "tree:Hierarchical": ["Animal/Dog", "Animal/Cat"],
+        "score:continuous": [0.25, 0.75],
+    }))
+    tree_id, score = frame[0]
+    assert score == 0.25
+    assert frame["score", 1] == 0.75
+    assert frame["id"][0] == 100
+    assert [data_type.name for data_type in frame.data_types] == ["tree", "score"]
+
+Types accept an optional ``Data`` suffix (for example, ``ContinuousData``).
+Use ``data_columns={"score"}`` to select annotated columns by name. Row tuples
+and ``data_types`` follow the original column order. Categorical and ordinal
+values are returned unchanged; supply integer category indices for use with
+embeddings and cross-entropy loss.
+
 
 .. end-quickstart
 
@@ -204,7 +256,6 @@ Credits
 Robert Turnbull
 For more information contact: <robert.turnbull@unimelb.edu.au>
 
-Created using torchapp (https://github.com/rbturnbull/torchapp).
 
 .. end-credits
 

@@ -1,6 +1,6 @@
 from torch import nn
 import abc
-from typing import List, Optional
+from typing import List, Optional, Protocol, Any
 from attrs import define, Factory, field, validators
 import torch.nn.functional as F
 from hierarchicalsoftmax import HierarchicalSoftmaxLoss, SoftmaxNode
@@ -8,6 +8,11 @@ from hierarchicalsoftmax import HierarchicalSoftmaxLoss, SoftmaxNode
 from .util import permute_feature_axis, squeeze_prediction
 from .enums import ContinuousLossType, BinaryLossType, CategoricalLossType
 
+
+class Getter(Protocol):
+    def __getitem__(self, key: int) -> Any: ...
+
+DELIMITER = "/"
 
 @define(kw_only=True)
 class PolyData(abc.ABC):
@@ -38,6 +43,10 @@ class PolyData(abc.ABC):
     @abc.abstractmethod
     def calculate_loss(self, prediction, target, feature_axis:int=-1):
         pass
+
+    @classmethod
+    def from_series(cls, name:str, series) -> tuple["PolyData", Getter]:
+        return cls(name=name), series.values
 
 
 def binary_default_factory():
@@ -119,6 +128,10 @@ class CategoricalData(PolyData):
     def __setstate__(self, state):
         super().__setstate__(state)
         
+    @classmethod
+    def from_series(cls, name:str, series) -> "PolyData":
+        return cls(name=name, category_count=series.nunique()), series.values
+
 
 @define
 class OrdinalData(CategoricalData):
@@ -184,3 +197,45 @@ class HierarchicalData(PolyData):
 
     def __setstate__(self, state):
         super().__setstate__(state)
+
+    @classmethod
+    def from_series(cls, name:str, series) -> "PolyData":
+        lineage_to_node = {}
+        roots = []
+        nodes = []
+
+        for item in series:
+            components = tuple(
+                component.strip()
+                for component in str(item).split(DELIMITER)
+                if component.strip()
+            )
+
+            if not components:
+                raise ValueError(f"Invalid hierarchical entry '{item}' for '{name}'.")
+
+            current_node = None
+            for component_index, component in enumerate(components):
+                my_lineage = tuple(components[:component_index + 1])
+                if my_lineage not in lineage_to_node:
+                    lineage_to_node[my_lineage] = SoftmaxNode(name=component, parent=current_node)
+                    if current_node is None:
+                        roots.append(lineage_to_node[my_lineage])
+                current_node = lineage_to_node[my_lineage]
+        
+            nodes.append(current_node)
+        
+        assert len(nodes) == len(series)
+
+        if len(roots) > 1:
+            root = SoftmaxNode(name="__root__", parent=None, children=roots)
+        elif len(roots) == 1:
+            root = roots[0]
+        else:   
+            raise ValueError("No data found to build HierarchicalData.")
+
+        root.set_indexes_if_unset()
+        node_ids = [root.node_to_id[node] for node in nodes]
+
+        return cls(name=name, root=root), node_ids
+        

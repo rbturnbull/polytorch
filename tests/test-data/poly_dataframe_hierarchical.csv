@@ -1,0 +1,7 @@
+id,partition,tree:Hierarchical,score:continuous
+0,0,Animal/Eagle,0.25
+1,0,Animal/Bird,0.3
+2,1,Vegetable/Tree,0.3
+3,0,Vegetable/Wheat,0.9
+4,0,Mineral/Rock,0.9
+5,0,Mineral/Gold,0.9

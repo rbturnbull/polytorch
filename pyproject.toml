@@ -1,30 +1,35 @@
-[tool.poetry]
+[project]
 name = "PolyTorch"
-version = "0.1.4"
+version = "0.2.2"
 description = "Embeddings and loss functions for different data types."
-authors = ["Robert Turnbull <robert.turnbull@unimelb.edu.au>"]
+authors = [{name = "Robert Turnbull", email = "robert.turnbull@unimelb.edu.au"}]
 license = "Apache-2.0"
 readme = "README.rst"
-repository = "https://github.com/rbturnbull/polytorch/"
-documentation = "https://rbturnbull.github.io/polytorch"
-homepage = "https://github.com/rbturnbull/polytorch/"
+requires-python = ">=3.10,<4.0"
 keywords = ["pytorch", "deep learning", "command-line interface"]
-# For classifiers see https://pypi.org/classifiers/
+dynamic = ["classifiers"]
+dependencies = [
+    "torch>=1.10.2",
+    "plotly>=6.1.1",
+    "scikit-learn>=1.0.2",
+    "kaleido>=1.0.0,<2",
+    "attrs>=19",
+    "hierarchicalsoftmax>=1.4.1",
+    "pandas>=2.3.3,<3.0.0",
+]
+
+[project.urls]
+Repository = "https://github.com/rbturnbull/polytorch/"
+Documentation = "https://rbturnbull.github.io/polytorch"
+Homepage = "https://github.com/rbturnbull/polytorch/"
+
+[tool.poetry]
+# Keep automatic Python classifier enrichment when building distributions.
 classifiers = [
-    "License :: OSI Approved :: Apache Software License",
     "Intended Audience :: Science/Research",
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Topic :: Scientific/Engineering :: Artificial Intelligence"
 ]
-
-[tool.poetry.dependencies]
-python = ">=3.10,<4.0"
-torch = ">=1.10.2"
-plotly = ">=5.15.0"
-scikit-learn = ">=1.0.2"
-kaleido = "=0.2.1"
-attrs = ">=19"
-hierarchicalsoftmax = ">=1.4.1"
 
 [tool.poetry.group.dev.dependencies]
 pytest = ">=6.2.5"
@@ -49,6 +54,6 @@ testpaths = [
 ]
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
+requires = ["poetry-core>=2.2.0"]
 build-backend = "poetry.core.masonry.api"
 
