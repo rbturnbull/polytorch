@@ -1,4 +1,13 @@
-from .data import BinaryData, CategoricalData, ContinuousData, OrdinalData, HierarchicalData, PolyData
+"""Embeddings, output layers, losses, and typed dataframes for PyTorch."""
+
+from .data import (
+    BinaryData,
+    CategoricalData,
+    ContinuousData,
+    OrdinalData,
+    HierarchicalData,
+    PolyData,
+)
 from .embedding import PolyEmbedding
 from .loss import PolyLoss
 from .enums import ContinuousLossType, CategoricalLossType, BinaryLossType

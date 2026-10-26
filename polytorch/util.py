@@ -1,3 +1,5 @@
+"""Tensor shape and prediction partitioning helpers."""
+
 from typing import List, Tuple
 from torch import Tensor
 
@@ -15,7 +17,9 @@ def total_size(data_types) -> int:
     return sum(data_type.size() for data_type in data_types)
 
 
-def split_tensor(tensor:Tensor, data_types, feature_axis:int=-1) -> Tuple[Tensor, ...]:
+def split_tensor(
+    tensor: Tensor, data_types, feature_axis: int = -1
+) -> Tuple[Tensor, ...]:
     """
     Splits a tensor into a tuple of tensors, one for each data type.
 
@@ -32,21 +36,22 @@ def split_tensor(tensor:Tensor, data_types, feature_axis:int=-1) -> Tuple[Tensor
     slice_indices = [slice(0, None)] * len(tensor.shape)
     for data_type in data_types:
         size = data_type.size()
-        slice_indices[feature_axis] = slice(current_index,current_index+size)
+        slice_indices[feature_axis] = slice(current_index, current_index + size)
         split_tensors.append(tensor[slice_indices])
         current_index += size
-    
+
     assert current_index == tensor.shape[feature_axis]
 
     return tuple(split_tensors)
 
 
-def permute_feature_axis(tensor:Tensor, old_axis:int, new_axis:int) -> Tensor:
+def permute_feature_axis(tensor: Tensor, old_axis: int, new_axis: int) -> Tensor:
     """
     Changes the shape of a tensor so that the feature axis is in a new axis.
 
     Args:
         tensor (torch.Tensor): The tensor to permute.
+        old_axis (int): The current index of the feature axis.
         new_axis (int): The desired index of the feature axis.
 
     Returns:
@@ -60,14 +65,24 @@ def permute_feature_axis(tensor:Tensor, old_axis:int, new_axis:int) -> Tensor:
     return tensor
 
 
-def squeeze_prediction(prediction:Tensor, target:Tensor, feature_axis:int):
+def squeeze_prediction(prediction: Tensor, target: Tensor, feature_axis: int):
     """
-    Squeeze feature axis if necessary
+    Remove a redundant singleton prediction feature axis when shapes match.
+
+        Args:
+            prediction: Prediction tensor, possibly with one extra dimension.
+            target: Target tensor used to determine the required shape.
+            feature_axis: Axis to squeeze when it is the only extra dimension.
+
+        Returns:
+            The squeezed prediction tensor, or the original tensor if its shape
+            does not satisfy the matching condition.
     """
     feature_axis = feature_axis % len(prediction.shape)
     if (
-        len(prediction.shape) == len(target.shape) + 1 and 
-        prediction.shape[:feature_axis] + prediction.shape[feature_axis+1:] == target.shape
+        len(prediction.shape) == len(target.shape) + 1
+        and prediction.shape[:feature_axis] + prediction.shape[feature_axis + 1 :]
+        == target.shape
     ):
         prediction = prediction.squeeze(feature_axis)
     return prediction

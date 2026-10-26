@@ -253,7 +253,7 @@ Credits
 
 .. start-credits
 
-Robert Turnbull
+`Robert Turnbull <https://robturnbull.com>`_ (Melbourne Data Analytics Platform, The University of Melbourne)
 For more information contact: <robert.turnbull@unimelb.edu.au>
 
 

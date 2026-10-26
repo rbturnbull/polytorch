@@ -22,6 +22,7 @@ DataFrames
 
 .. automodule:: polytorch.dataframe
     :members:
+    :special-members: __getitem__, __len__
 
 Embedding
 =======================
