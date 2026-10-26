@@ -57,33 +57,79 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#module-polytorch.data">Data</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#polytorch.data.BinaryData"><code class="docutils literal notranslate"><span class="pre">BinaryData</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.data.BinaryData.loss_type"><code class="docutils literal notranslate"><span class="pre">BinaryData.loss_type</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.data.BinaryData.labels"><code class="docutils literal notranslate"><span class="pre">BinaryData.labels</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.data.BinaryData.colors"><code class="docutils literal notranslate"><span class="pre">BinaryData.colors</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.data.BinaryData.calculate_loss"><code class="docutils literal notranslate"><span class="pre">BinaryData.calculate_loss()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.data.BinaryData.embedding_module"><code class="docutils literal notranslate"><span class="pre">BinaryData.embedding_module()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#polytorch.data.BinaryData.size"><code class="docutils literal notranslate"><span class="pre">BinaryData.size()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#polytorch.data.CategoricalData"><code class="docutils literal notranslate"><span class="pre">CategoricalData</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.data.CategoricalData.category_count"><code class="docutils literal notranslate"><span class="pre">CategoricalData.category_count</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.data.CategoricalData.loss_type"><code class="docutils literal notranslate"><span class="pre">CategoricalData.loss_type</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.data.CategoricalData.labels"><code class="docutils literal notranslate"><span class="pre">CategoricalData.labels</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.data.CategoricalData.colors"><code class="docutils literal notranslate"><span class="pre">CategoricalData.colors</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.data.CategoricalData.label_smoothing"><code class="docutils literal notranslate"><span class="pre">CategoricalData.label_smoothing</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.data.CategoricalData.calculate_loss"><code class="docutils literal notranslate"><span class="pre">CategoricalData.calculate_loss()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.data.CategoricalData.embedding_module"><code class="docutils literal notranslate"><span class="pre">CategoricalData.embedding_module()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.data.CategoricalData.from_series"><code class="docutils literal notranslate"><span class="pre">CategoricalData.from_series()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#polytorch.data.CategoricalData.size"><code class="docutils literal notranslate"><span class="pre">CategoricalData.size()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#polytorch.data.ContinuousData"><code class="docutils literal notranslate"><span class="pre">ContinuousData</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.data.ContinuousData.loss_type"><code class="docutils literal notranslate"><span class="pre">ContinuousData.loss_type</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.data.ContinuousData.color"><code class="docutils literal notranslate"><span class="pre">ContinuousData.color</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.data.ContinuousData.mean"><code class="docutils literal notranslate"><span class="pre">ContinuousData.mean</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.data.ContinuousData.stdev"><code class="docutils literal notranslate"><span class="pre">ContinuousData.stdev</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.data.ContinuousData.calculate_loss"><code class="docutils literal notranslate"><span class="pre">ContinuousData.calculate_loss()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.data.ContinuousData.embedding_module"><code class="docutils literal notranslate"><span class="pre">ContinuousData.embedding_module()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.data.ContinuousData.loss_func"><code class="docutils literal notranslate"><span class="pre">ContinuousData.loss_func</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#polytorch.data.ContinuousData.size"><code class="docutils literal notranslate"><span class="pre">ContinuousData.size()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#polytorch.data.Getter"><code class="docutils literal notranslate"><span class="pre">Getter</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#polytorch.data.HierarchicalData"><code class="docutils literal notranslate"><span class="pre">HierarchicalData</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.data.HierarchicalData.root"><code class="docutils literal notranslate"><span class="pre">HierarchicalData.root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.data.HierarchicalData.calculate_loss"><code class="docutils literal notranslate"><span class="pre">HierarchicalData.calculate_loss()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.data.HierarchicalData.embedding_module"><code class="docutils literal notranslate"><span class="pre">HierarchicalData.embedding_module()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.data.HierarchicalData.from_series"><code class="docutils literal notranslate"><span class="pre">HierarchicalData.from_series()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.data.HierarchicalData.loss_module"><code class="docutils literal notranslate"><span class="pre">HierarchicalData.loss_module</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#polytorch.data.HierarchicalData.size"><code class="docutils literal notranslate"><span class="pre">HierarchicalData.size()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#polytorch.data.OrdinalData"><code class="docutils literal notranslate"><span class="pre">OrdinalData</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#polytorch.data.OrdinalData"><code class="docutils literal notranslate"><span class="pre">OrdinalData</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.data.OrdinalData.color"><code class="docutils literal notranslate"><span class="pre">OrdinalData.color</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.data.OrdinalData.embedding_module"><code class="docutils literal notranslate"><span class="pre">OrdinalData.embedding_module()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#polytorch.data.PolyData"><code class="docutils literal notranslate"><span class="pre">PolyData</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.data.PolyData.name"><code class="docutils literal notranslate"><span class="pre">PolyData.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.data.PolyData.loss_weighting"><code class="docutils literal notranslate"><span class="pre">PolyData.loss_weighting</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.data.PolyData.calculate_loss"><code class="docutils literal notranslate"><span class="pre">PolyData.calculate_loss()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.data.PolyData.embedding_module"><code class="docutils literal notranslate"><span class="pre">PolyData.embedding_module()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.data.PolyData.from_series"><code class="docutils literal notranslate"><span class="pre">PolyData.from_series()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#polytorch.data.PolyData.size"><code class="docutils literal notranslate"><span class="pre">PolyData.size()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#polytorch.data.binary_default_factory"><code class="docutils literal notranslate"><span class="pre">binary_default_factory()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#module-polytorch.dataframe">DataFrames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-polytorch.dataframe">DataFrames</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#polytorch.dataframe.PolyDataFrame"><code class="docutils literal notranslate"><span class="pre">PolyDataFrame</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.dataframe.PolyDataFrame.pandas_df"><code class="docutils literal notranslate"><span class="pre">PolyDataFrame.pandas_df</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.dataframe.PolyDataFrame.data_types"><code class="docutils literal notranslate"><span class="pre">PolyDataFrame.data_types</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.dataframe.PolyDataFrame.getters"><code class="docutils literal notranslate"><span class="pre">PolyDataFrame.getters</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.dataframe.PolyDataFrame.__getitem__"><code class="docutils literal notranslate"><span class="pre">PolyDataFrame.__getitem__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.dataframe.PolyDataFrame.__len__"><code class="docutils literal notranslate"><span class="pre">PolyDataFrame.__len__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#module-polytorch.embedding">Embedding</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#polytorch.embedding.ContinuousEmbedding"><code class="docutils literal notranslate"><span class="pre">ContinuousEmbedding</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#polytorch.embedding.ContinuousEmbedding.forward"><code class="docutils literal notranslate"><span class="pre">ContinuousEmbedding.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.embedding.ContinuousEmbedding.reset_parameters"><code class="docutils literal notranslate"><span class="pre">ContinuousEmbedding.reset_parameters()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#polytorch.embedding.OrdinalEmbedding"><code class="docutils literal notranslate"><span class="pre">OrdinalEmbedding</span></code></a><ul>
@@ -92,12 +138,17 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#polytorch.embedding.PolyEmbedding"><code class="docutils literal notranslate"><span class="pre">PolyEmbedding</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#polytorch.embedding.PolyEmbedding.forward"><code class="docutils literal notranslate"><span class="pre">PolyEmbedding.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.embedding.PolyEmbedding.plot"><code class="docutils literal notranslate"><span class="pre">PolyEmbedding.plot()</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#module-polytorch.modules">Modules</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#polytorch.modules.PolyLayerError"><code class="docutils literal notranslate"><span class="pre">PolyLayerError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#polytorch.modules.PolyLayerMixin"><code class="docutils literal notranslate"><span class="pre">PolyLayerMixin</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.modules.PolyLayerMixin.forward"><code class="docutils literal notranslate"><span class="pre">PolyLayerMixin.forward()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#polytorch.modules.PolyLazyLinear"><code class="docutils literal notranslate"><span class="pre">PolyLazyLinear</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#polytorch.modules.PolyLinear"><code class="docutils literal notranslate"><span class="pre">PolyLinear</span></code></a></li>
 </ul>
@@ -110,8 +161,38 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#module-polytorch.metrics">Metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#polytorch.metrics.CategoricalAccuracy"><code class="docutils literal notranslate"><span class="pre">CategoricalAccuracy</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.metrics.CategoricalAccuracy.calc"><code class="docutils literal notranslate"><span class="pre">CategoricalAccuracy.calc()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#polytorch.metrics.HierarchicalGreedyAccuracy"><code class="docutils literal notranslate"><span class="pre">HierarchicalGreedyAccuracy</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.metrics.HierarchicalGreedyAccuracy.root"><code class="docutils literal notranslate"><span class="pre">HierarchicalGreedyAccuracy.root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.metrics.HierarchicalGreedyAccuracy.max_depth"><code class="docutils literal notranslate"><span class="pre">HierarchicalGreedyAccuracy.max_depth</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.metrics.HierarchicalGreedyAccuracy.calc"><code class="docutils literal notranslate"><span class="pre">HierarchicalGreedyAccuracy.calc()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#polytorch.metrics.PolyMetric"><code class="docutils literal notranslate"><span class="pre">PolyMetric</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.metrics.PolyMetric.data_index"><code class="docutils literal notranslate"><span class="pre">PolyMetric.data_index</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.metrics.PolyMetric.feature_axis"><code class="docutils literal notranslate"><span class="pre">PolyMetric.feature_axis</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.metrics.PolyMetric.function"><code class="docutils literal notranslate"><span class="pre">PolyMetric.function</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.metrics.PolyMetric.name"><code class="docutils literal notranslate"><span class="pre">PolyMetric.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.metrics.PolyMetric.calc"><code class="docutils literal notranslate"><span class="pre">PolyMetric.calc()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polytorch.metrics.PolyMetric.default_name"><code class="docutils literal notranslate"><span class="pre">PolyMetric.default_name()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#polytorch.metrics.binary_accuracy"><code class="docutils literal notranslate"><span class="pre">binary_accuracy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#polytorch.metrics.binary_dice"><code class="docutils literal notranslate"><span class="pre">binary_dice()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#polytorch.metrics.binary_iou"><code class="docutils literal notranslate"><span class="pre">binary_iou()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#polytorch.metrics.calc_dice_score"><code class="docutils literal notranslate"><span class="pre">calc_dice_score()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#polytorch.metrics.calc_generalized_dice_score"><code class="docutils literal notranslate"><span class="pre">calc_generalized_dice_score()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#polytorch.metrics.calc_iou"><code class="docutils literal notranslate"><span class="pre">calc_iou()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#polytorch.metrics.categorical_accuracy"><code class="docutils literal notranslate"><span class="pre">categorical_accuracy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#polytorch.metrics.function_metric"><code class="docutils literal notranslate"><span class="pre">function_metric()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#polytorch.metrics.generalized_dice"><code class="docutils literal notranslate"><span class="pre">generalized_dice()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#polytorch.metrics.get_predictions_target_for_index"><code class="docutils literal notranslate"><span class="pre">get_predictions_target_for_index()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#polytorch.metrics.l1"><code class="docutils literal notranslate"><span class="pre">l1()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#polytorch.metrics.mse"><code class="docutils literal notranslate"><span class="pre">mse()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#polytorch.metrics.smooth_l1"><code class="docutils literal notranslate"><span class="pre">smooth_l1()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#module-polytorch.plots">Plots</a><ul>
@@ -159,31 +240,82 @@
 <h1>API Reference<a class="headerlink" href="#api-reference" title="Link to this heading"></a></h1>
 <section id="module-polytorch.enums">
 <span id="enums"></span><h2>Enums<a class="headerlink" href="#module-polytorch.enums" title="Link to this heading"></a></h2>
+<p>Loss function choices for PolyTorch data types.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="polytorch.enums.BinaryLossType">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">polytorch.enums.</span></span><span class="sig-name descname"><span class="pre">BinaryLossType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.enums.BinaryLossType" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Binary losses: logit cross-entropy, intersection-over-union, or Dice.</p>
+</dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="polytorch.enums.CategoricalLossType">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">polytorch.enums.</span></span><span class="sig-name descname"><span class="pre">CategoricalLossType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.enums.CategoricalLossType" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Categorical losses: cross-entropy or generalized Dice.</p>
+</dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="polytorch.enums.ContinuousLossType">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">polytorch.enums.</span></span><span class="sig-name descname"><span class="pre">ContinuousLossType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.enums.ContinuousLossType" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Regression losses: absolute error, squared error, or smooth L1.</p>
+</dd></dl>
 
 </section>
 <section id="module-polytorch.data">
 <span id="data"></span><h2>Data<a class="headerlink" href="#module-polytorch.data" title="Link to this heading"></a></h2>
+<p>Feature definitions for embeddings, prediction widths, and losses.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="polytorch.data.BinaryData">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">polytorch.data.</span></span><span class="sig-name descname"><span class="pre">BinaryData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loss_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#polytorch.enums.BinaryLossType" title="polytorch.enums.BinaryLossType"><span class="pre">BinaryLossType</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">BinaryLossType.CROSS_ENTROPY</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">NOTHING</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">NOTHING</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_weighting</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.data.BinaryData" title="Link to this definition"></a></dt>
-<dd><dl class="py method">
+<dd><p>Describe a binary feature predicted by a single logit.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="polytorch.data.BinaryData.loss_type">
+<span class="sig-name descname"><span class="pre">loss_type</span></span><a class="headerlink" href="#polytorch.data.BinaryData.loss_type" title="Link to this definition"></a></dt>
+<dd><p>Binary cross-entropy, intersection-over-union, or Dice loss.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#polytorch.enums.BinaryLossType" title="polytorch.enums.BinaryLossType">polytorch.enums.BinaryLossType</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="polytorch.data.BinaryData.labels">
+<span class="sig-name descname"><span class="pre">labels</span></span><a class="headerlink" href="#polytorch.data.BinaryData.labels" title="Link to this definition"></a></dt>
+<dd><p>Labels for the false and true values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="polytorch.data.BinaryData.colors">
+<span class="sig-name descname"><span class="pre">colors</span></span><a class="headerlink" href="#polytorch.data.BinaryData.colors" title="Link to this definition"></a></dt>
+<dd><p>Optional plotting colors for the two values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[str] | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="polytorch.data.BinaryData.calculate_loss">
+<span class="sig-name descname"><span class="pre">calculate_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prediction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_axis</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.data.BinaryData.calculate_loss" title="Link to this definition"></a></dt>
+<dd><p>Calculate the configured loss using the supplied prediction feature axis.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="polytorch.data.BinaryData.embedding_module">
+<span class="sig-name descname"><span class="pre">embedding_module</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">embedding_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Module</span></span></span><a class="headerlink" href="#polytorch.data.BinaryData.embedding_module" title="Link to this definition"></a></dt>
+<dd><p>Create the embedding module for this feature type.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="polytorch.data.BinaryData.size">
 <span class="sig-name descname"><span class="pre">size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#polytorch.data.BinaryData.size" title="Link to this definition"></a></dt>
-<dd><p>The prediction size of this data type.</p>
+<dd><p>Return the number of prediction features required by this data type.</p>
 </dd></dl>
 
 </dd></dl>
@@ -191,10 +323,96 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="polytorch.data.CategoricalData">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">polytorch.data.</span></span><span class="sig-name descname"><span class="pre">CategoricalData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">category_count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#polytorch.enums.CategoricalLossType" title="polytorch.enums.CategoricalLossType"><span class="pre">CategoricalLossType</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">CategoricalLossType.CROSS_ENTROPY</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_smoothing</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">NOTHING</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_weighting</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.data.CategoricalData" title="Link to this definition"></a></dt>
-<dd><dl class="py method">
+<dd><p>Describe an unordered categorical feature.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="polytorch.data.CategoricalData.category_count">
+<span class="sig-name descname"><span class="pre">category_count</span></span><a class="headerlink" href="#polytorch.data.CategoricalData.category_count" title="Link to this definition"></a></dt>
+<dd><p>Number of categories and prediction logits.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="polytorch.data.CategoricalData.loss_type">
+<span class="sig-name descname"><span class="pre">loss_type</span></span><a class="headerlink" href="#polytorch.data.CategoricalData.loss_type" title="Link to this definition"></a></dt>
+<dd><p>Cross-entropy or generalized Dice loss.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#polytorch.enums.CategoricalLossType" title="polytorch.enums.CategoricalLossType">polytorch.enums.CategoricalLossType</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="polytorch.data.CategoricalData.labels">
+<span class="sig-name descname"><span class="pre">labels</span></span><a class="headerlink" href="#polytorch.data.CategoricalData.labels" title="Link to this definition"></a></dt>
+<dd><p>Optional category labels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[str] | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="polytorch.data.CategoricalData.colors">
+<span class="sig-name descname"><span class="pre">colors</span></span><a class="headerlink" href="#polytorch.data.CategoricalData.colors" title="Link to this definition"></a></dt>
+<dd><p>Optional category plotting colors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[str] | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="polytorch.data.CategoricalData.label_smoothing">
+<span class="sig-name descname"><span class="pre">label_smoothing</span></span><a class="headerlink" href="#polytorch.data.CategoricalData.label_smoothing" title="Link to this definition"></a></dt>
+<dd><p>Cross-entropy smoothing in the inclusive range [0, 1].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="polytorch.data.CategoricalData.calculate_loss">
+<span class="sig-name descname"><span class="pre">calculate_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prediction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_axis</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.data.CategoricalData.calculate_loss" title="Link to this definition"></a></dt>
+<dd><p>Calculate the configured loss using the supplied prediction feature axis.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="polytorch.data.CategoricalData.embedding_module">
+<span class="sig-name descname"><span class="pre">embedding_module</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">embedding_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Module</span></span></span><a class="headerlink" href="#polytorch.data.CategoricalData.embedding_module" title="Link to this definition"></a></dt>
+<dd><p>Create the embedding module for this feature type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="polytorch.data.CategoricalData.from_series">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_series</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#polytorch.data.PolyData" title="polytorch.data.PolyData"><span class="pre">PolyData</span></a></span></span><a class="headerlink" href="#polytorch.data.CategoricalData.from_series" title="Link to this definition"></a></dt>
+<dd><p>Infer the category count and return the original series values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – Feature name.</p></li>
+<li><p><strong>series</strong> – A pandas Series; its non-null unique count sets category_count.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A pair containing the data type and unchanged series values. String
+labels are not encoded, and numeric values are not remapped to indices.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="polytorch.data.CategoricalData.size">
 <span class="sig-name descname"><span class="pre">size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#polytorch.data.CategoricalData.size" title="Link to this definition"></a></dt>
-<dd><p>The prediction size of this data type.</p>
+<dd><p>Return the number of prediction features required by this data type.</p>
 </dd></dl>
 
 </dd></dl>
@@ -202,10 +420,73 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="polytorch.data.ContinuousData">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">polytorch.data.</span></span><span class="sig-name descname"><span class="pre">ContinuousData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loss_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#polytorch.enums.ContinuousLossType" title="polytorch.enums.ContinuousLossType"><span class="pre">ContinuousLossType</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">ContinuousLossType.SMOOTH_L1_LOSS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stdev</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">NOTHING</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_weighting</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.data.ContinuousData" title="Link to this definition"></a></dt>
-<dd><dl class="py method">
+<dd><p>Describe a scalar feature with optional target normalization.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="polytorch.data.ContinuousData.loss_type">
+<span class="sig-name descname"><span class="pre">loss_type</span></span><a class="headerlink" href="#polytorch.data.ContinuousData.loss_type" title="Link to this definition"></a></dt>
+<dd><p>PyTorch regression loss to apply.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#polytorch.enums.ContinuousLossType" title="polytorch.enums.ContinuousLossType">polytorch.enums.ContinuousLossType</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="polytorch.data.ContinuousData.color">
+<span class="sig-name descname"><span class="pre">color</span></span><a class="headerlink" href="#polytorch.data.ContinuousData.color" title="Link to this definition"></a></dt>
+<dd><p>Optional plotting color.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="polytorch.data.ContinuousData.mean">
+<span class="sig-name descname"><span class="pre">mean</span></span><a class="headerlink" href="#polytorch.data.ContinuousData.mean" title="Link to this definition"></a></dt>
+<dd><p>Value subtracted from targets and embedding inputs when set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="polytorch.data.ContinuousData.stdev">
+<span class="sig-name descname"><span class="pre">stdev</span></span><a class="headerlink" href="#polytorch.data.ContinuousData.stdev" title="Link to this definition"></a></dt>
+<dd><p>Divisor applied after centering when set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="polytorch.data.ContinuousData.calculate_loss">
+<span class="sig-name descname"><span class="pre">calculate_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prediction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_axis</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.data.ContinuousData.calculate_loss" title="Link to this definition"></a></dt>
+<dd><p>Calculate the configured loss using the supplied prediction feature axis.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="polytorch.data.ContinuousData.embedding_module">
+<span class="sig-name descname"><span class="pre">embedding_module</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">embedding_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Module</span></span></span><a class="headerlink" href="#polytorch.data.ContinuousData.embedding_module" title="Link to this definition"></a></dt>
+<dd><p>Create the embedding module for this feature type.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="polytorch.data.ContinuousData.loss_func">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">loss_func</span></span><a class="headerlink" href="#polytorch.data.ContinuousData.loss_func" title="Link to this definition"></a></dt>
+<dd><p>Return the PyTorch functional loss selected by loss_type.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="polytorch.data.ContinuousData.size">
 <span class="sig-name descname"><span class="pre">size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#polytorch.data.ContinuousData.size" title="Link to this definition"></a></dt>
-<dd><p>The prediction size of this data type.</p>
+<dd><p>Return the number of prediction features required by this data type.</p>
 </dd></dl>
 
 </dd></dl>
@@ -213,15 +494,71 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="polytorch.data.Getter">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">polytorch.data.</span></span><span class="sig-name descname"><span class="pre">Getter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.data.Getter" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Protocol for values accessible by integer row index.</p>
+</dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="polytorch.data.HierarchicalData">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">polytorch.data.</span></span><span class="sig-name descname"><span class="pre">HierarchicalData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SoftmaxNode</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">NOTHING</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_weighting</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.data.HierarchicalData" title="Link to this definition"></a></dt>
-<dd><dl class="py method">
+<dd><p>Describe classes arranged in a hierarchical softmax tree.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="polytorch.data.HierarchicalData.root">
+<span class="sig-name descname"><span class="pre">root</span></span><a class="headerlink" href="#polytorch.data.HierarchicalData.root" title="Link to this definition"></a></dt>
+<dd><p>Root SoftmaxNode defining the prediction structure and node IDs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>hierarchicalsoftmax.nodes.SoftmaxNode</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>Hierarchical data supports prediction and loss, but not embedding.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="polytorch.data.HierarchicalData.calculate_loss">
+<span class="sig-name descname"><span class="pre">calculate_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prediction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_axis</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.data.HierarchicalData.calculate_loss" title="Link to this definition"></a></dt>
+<dd><p>Calculate the configured loss using the supplied prediction feature axis.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="polytorch.data.HierarchicalData.embedding_module">
+<span class="sig-name descname"><span class="pre">embedding_module</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">embedding_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Module</span></span></span><a class="headerlink" href="#polytorch.data.HierarchicalData.embedding_module" title="Link to this definition"></a></dt>
+<dd><p>Raise NotImplementedError because hierarchical embeddings are unsupported.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="polytorch.data.HierarchicalData.from_series">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_series</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#polytorch.data.PolyData" title="polytorch.data.PolyData"><span class="pre">PolyData</span></a></span></span><a class="headerlink" href="#polytorch.data.HierarchicalData.from_series" title="Link to this definition"></a></dt>
+<dd><p>Build a shared hierarchy and map each input path to its terminal node ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – Feature name.</p></li>
+<li><p><strong>series</strong> – Series of paths separated by <code class="docutils literal notranslate"><span class="pre">/</span></code>. Components are stripped of
+surrounding whitespace, and empty components are ignored.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A pair containing the data type and a list of node IDs in input order.
+Identical normalized paths reuse nodes. Multiple top-level nodes are
+attached to a virtual root named <code class="docutils literal notranslate"><span class="pre">__root__</span></code>.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – The series is empty or an entry has no nonempty components.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="polytorch.data.HierarchicalData.loss_module">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">loss_module</span></span><a class="headerlink" href="#polytorch.data.HierarchicalData.loss_module" title="Link to this definition"></a></dt>
+<dd><p>Create the hierarchical softmax loss associated with this tree.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="polytorch.data.HierarchicalData.size">
 <span class="sig-name descname"><span class="pre">size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#polytorch.data.HierarchicalData.size" title="Link to this definition"></a></dt>
-<dd><p>The prediction size of this data type.</p>
+<dd><p>Return the number of prediction features required by this data type.</p>
 </dd></dl>
 
 </dd></dl>
@@ -229,12 +566,103 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="polytorch.data.OrdinalData">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">polytorch.data.</span></span><span class="sig-name descname"><span class="pre">OrdinalData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">category_count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#polytorch.enums.CategoricalLossType" title="polytorch.enums.CategoricalLossType"><span class="pre">CategoricalLossType</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">CategoricalLossType.CROSS_ENTROPY</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_smoothing</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">NOTHING</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_weighting</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.data.OrdinalData" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Describe ordered categories with learned distances in the embedding.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="polytorch.data.OrdinalData.color">
+<span class="sig-name descname"><span class="pre">color</span></span><a class="headerlink" href="#polytorch.data.OrdinalData.color" title="Link to this definition"></a></dt>
+<dd><p>Optional plotting color. Category count and loss configuration
+are inherited from CategoricalData.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="polytorch.data.OrdinalData.embedding_module">
+<span class="sig-name descname"><span class="pre">embedding_module</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">embedding_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Module</span></span></span><a class="headerlink" href="#polytorch.data.OrdinalData.embedding_module" title="Link to this definition"></a></dt>
+<dd><p>Create the embedding module for this feature type.</p>
+</dd></dl>
+
+</dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="polytorch.data.PolyData">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">polytorch.data.</span></span><span class="sig-name descname"><span class="pre">PolyData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">NOTHING</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_weighting</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.data.PolyData" title="Link to this definition"></a></dt>
-<dd><dl class="py method">
+<dd><p>Describe a feature’s prediction width, embedding, and loss.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="polytorch.data.PolyData.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#polytorch.data.PolyData.name" title="Link to this definition"></a></dt>
+<dd><p>Feature name, defaulting to the concrete class name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="polytorch.data.PolyData.loss_weighting">
+<span class="sig-name descname"><span class="pre">loss_weighting</span></span><a class="headerlink" href="#polytorch.data.PolyData.loss_weighting" title="Link to this definition"></a></dt>
+<dd><p>Multiplier applied by PolyLoss to this feature’s loss.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="polytorch.data.PolyData.calculate_loss">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">calculate_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prediction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_axis</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.data.PolyData.calculate_loss" title="Link to this definition"></a></dt>
+<dd><p>Calculate the configured loss from predictions and targets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prediction</strong> – Model predictions, including a feature axis.</p></li>
+<li><p><strong>target</strong> – Ground-truth values for this data type.</p></li>
+<li><p><strong>feature_axis</strong> – Axis containing predicted features; defaults to the last.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A loss tensor whose reduction depends on the concrete data type.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="polytorch.data.PolyData.embedding_module">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">embedding_module</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">embedding_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Module</span></span></span><a class="headerlink" href="#polytorch.data.PolyData.embedding_module" title="Link to this definition"></a></dt>
+<dd><p>Create a module mapping feature values to embedding vectors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>embedding_size</strong> – Number of coordinates in each embedding vector.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A PyTorch module accepting values for this data type.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="polytorch.data.PolyData.from_series">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_series</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#polytorch.data.PolyData" title="polytorch.data.PolyData"><span class="pre">PolyData</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#polytorch.data.Getter" title="polytorch.data.Getter"><span class="pre">Getter</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#polytorch.data.PolyData.from_series" title="Link to this definition"></a></dt>
+<dd><p>Construct a named data type and expose the series values unchanged.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – Name assigned to the constructed data type.</p></li>
+<li><p><strong>series</strong> – A pandas Series containing feature values.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A pair containing the data type instance and indexable row values.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="polytorch.data.PolyData.size">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#polytorch.data.PolyData.size" title="Link to this definition"></a></dt>
 <dd><p>The prediction size of this data type.</p>
@@ -242,27 +670,134 @@
 
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="polytorch.data.binary_default_factory">
+<span class="sig-prename descclassname"><span class="pre">polytorch.data.</span></span><span class="sig-name descname"><span class="pre">binary_default_factory</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.data.binary_default_factory" title="Link to this definition"></a></dt>
+<dd><p>Return the default labels for false and true binary values.</p>
+</dd></dl>
+
 </section>
 <section id="module-polytorch.dataframe">
 <span id="dataframes"></span><h2>DataFrames<a class="headerlink" href="#module-polytorch.dataframe" title="Link to this heading"></a></h2>
+<p>Typed dataframe loading and indexing for PolyTorch features.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="polytorch.dataframe.PolyDataFrame">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">polytorch.dataframe.</span></span><span class="sig-name descname"><span class="pre">PolyDataFrame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">csv</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.dataframe.PolyDataFrame" title="Link to this definition"></a></dt>
+<dd><p>Load columns annotated with PolyTorch data types.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>csv</strong> – A pandas dataframe or a CSV filename supplied as a pathlib.Path.</p></li>
+<li><p><strong>data_columns</strong> – Annotated column names to include, without type suffixes.
+None or an empty collection includes all annotated columns.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="polytorch.dataframe.PolyDataFrame.pandas_df">
+<span class="sig-name descname"><span class="pre">pandas_df</span></span><a class="headerlink" href="#polytorch.dataframe.PolyDataFrame.pandas_df" title="Link to this definition"></a></dt>
+<dd><p>The original dataframe, or the dataframe read from CSV.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="polytorch.dataframe.PolyDataFrame.data_types">
+<span class="sig-name descname"><span class="pre">data_types</span></span><a class="headerlink" href="#polytorch.dataframe.PolyDataFrame.data_types" title="Link to this definition"></a></dt>
+<dd><p>Data type instances in source column order.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="polytorch.dataframe.PolyDataFrame.getters">
+<span class="sig-name descname"><span class="pre">getters</span></span><a class="headerlink" href="#polytorch.dataframe.PolyDataFrame.getters" title="Link to this definition"></a></dt>
+<dd><p>Mapping from selected column names to indexable values.</p>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>Headers use <code class="docutils literal notranslate"><span class="pre">name:type</span></code>, such as <code class="docutils literal notranslate"><span class="pre">score:continuous</span></code> or
+<code class="docutils literal notranslate"><span class="pre">group:CategoricalData</span></code>. Whitespace around names and types is stripped.
+Unannotated columns remain accessible by their original names but are
+excluded from row tuples. Categorical and ordinal values are not encoded;
+supply integer category indices when using embeddings or cross-entropy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ValueError</strong> – A selected column has an unknown type, or a requested column
+    is missing.</p></li>
+<li><p><strong>AssertionError</strong> – An annotated header contains multiple colons.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">frame</span> <span class="o">=</span> <span class="n">PolyDataFrame</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;score:continuous&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">]}))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="n">frame</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="p">(</span><span class="mf">0.25</span><span class="p">,)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="n">frame</span><span class="p">[</span><span class="s2">&quot;score&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.75</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="polytorch.dataframe.PolyDataFrame.__getitem__">
+<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idx</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="headerlink" href="#polytorch.dataframe.PolyDataFrame.__getitem__" title="Link to this definition"></a></dt>
+<dd><p>Return a row, column, or individual value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>idx</strong> – A Python or NumPy integer for a row tuple; a string for a column;
+or a <code class="docutils literal notranslate"><span class="pre">(column_name,</span> <span class="pre">row_index)</span></code> tuple for an individual value.
+Selected annotated columns use names without type suffixes.
+Original dataframe column names also provide access to raw values.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A row tuple in selected column order, an indexable column, or a value.
+Hierarchical columns return node IDs through their parsed names and
+original path strings through their full annotated headers.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>KeyError</strong> – The key type or column name is unsupported.</p></li>
+<li><p><strong>IndexError</strong> – A row index is out of bounds.</p></li>
+<li><p><strong>AssertionError</strong> – A tuple key does not contain exactly two elements.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="polytorch.dataframe.PolyDataFrame.__len__">
+<span class="sig-name descname"><span class="pre">__len__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.dataframe.PolyDataFrame.__len__" title="Link to this definition"></a></dt>
+<dd><p>Return the number of rows in the underlying dataframe.</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 <section id="module-polytorch.embedding">
 <span id="embedding"></span><h2>Embedding<a class="headerlink" href="#module-polytorch.embedding" title="Link to this heading"></a></h2>
+<p>Learned embeddings for continuous, ordinal, and mixed input features.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="polytorch.embedding.ContinuousEmbedding">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">polytorch.embedding.</span></span><span class="sig-name descname"><span class="pre">ContinuousEmbedding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">embedding_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stdev</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.embedding.ContinuousEmbedding" title="Link to this definition"></a></dt>
-<dd><dl class="py method">
+<dd><p>Embed scalar values using a learned affine transformation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>embedding_size</strong> – Number of coordinates in each output vector.</p></li>
+<li><p><strong>bias</strong> – Whether the bias vector is trainable. Otherwise it is fixed at zero.</p></li>
+<li><p><strong>mean</strong> – Optional value subtracted from inputs.</p></li>
+<li><p><strong>stdev</strong> – Optional divisor applied after centering.</p></li>
+<li><p><strong>device</strong> – Device on which to create parameters.</p></li>
+<li><p><strong>dtype</strong> – Parameter dtype.</p></li>
+<li><p><strong>**kwargs</strong> – Additional arguments passed to nn.Module.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
 <dt class="sig sig-object py" id="polytorch.embedding.ContinuousEmbedding.forward">
 <span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.embedding.ContinuousEmbedding.forward" title="Link to this definition"></a></dt>
-<dd><p>Define the computation performed at every call.</p>
-<p>Should be overridden by all subclasses.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Although the recipe for forward pass needs to be defined within
-this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
-instead of this since the former takes care of running the
-registered hooks while the latter silently ignores them.</p>
-</div>
+<dd><p>Embed each scalar, appending an embedding_size axis to the input shape.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="polytorch.embedding.ContinuousEmbedding.reset_parameters">
+<span class="sig-name descname"><span class="pre">reset_parameters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#polytorch.embedding.ContinuousEmbedding.reset_parameters" title="Link to this definition"></a></dt>
+<dd><p>Initialize weights from a standard normal distribution and zero the bias.</p>
 </dd></dl>
 
 </dd></dl>
@@ -270,18 +805,26 @@ registered hooks while the latter silently ignores them.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="polytorch.embedding.OrdinalEmbedding">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">polytorch.embedding.</span></span><span class="sig-name descname"><span class="pre">OrdinalEmbedding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">category_count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedding_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.embedding.OrdinalEmbedding" title="Link to this definition"></a></dt>
-<dd><dl class="py method">
+<dd><p>Embed integer category indices along an ordered line segment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>category_count</strong> – Number of ordered categories.</p></li>
+<li><p><strong>embedding_size</strong> – Number of coordinates per embedding.</p></li>
+<li><p><strong>bias</strong> – Whether to train the bias vector.</p></li>
+<li><p><strong>device</strong> – Parameter device.</p></li>
+<li><p><strong>dtype</strong> – Parameter dtype.</p></li>
+<li><p><strong>**kwargs</strong> – Additional arguments passed to ContinuousEmbedding.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>A softmax over learned distance scores defines positive gaps between
+categories. Cumulative gaps locate categories between zero and one.</p>
+<dl class="py method">
 <dt class="sig sig-object py" id="polytorch.embedding.OrdinalEmbedding.forward">
 <span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.embedding.OrdinalEmbedding.forward" title="Link to this definition"></a></dt>
-<dd><p>Define the computation performed at every call.</p>
-<p>Should be overridden by all subclasses.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Although the recipe for forward pass needs to be defined within
-this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
-instead of this since the former takes care of running the
-registered hooks while the latter silently ignores them.</p>
-</div>
+<dd><p>Embed integer category indices, appending the embedding coordinate axis.</p>
 </dd></dl>
 
 </dd></dl>
@@ -289,18 +832,44 @@ registered hooks while the latter silently ignores them.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="polytorch.embedding.PolyEmbedding">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">polytorch.embedding.</span></span><span class="sig-name descname"><span class="pre">PolyEmbedding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_types</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#polytorch.data.PolyData" title="polytorch.data.PolyData"><span class="pre">PolyData</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedding_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_axis</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.embedding.PolyEmbedding" title="Link to this definition"></a></dt>
-<dd><dl class="py method">
+<dd><p>Sum embeddings for multiple features into a shared representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_types</strong> – Ordered data type definitions for the input tensors.</p></li>
+<li><p><strong>embedding_size</strong> – Number of coordinates in the shared embedding.</p></li>
+<li><p><strong>feature_axis</strong> – Axis at which to place the output embedding coordinates.</p></li>
+<li><p><strong>**kwargs</strong> – Additional arguments passed to nn.Module.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
 <dt class="sig sig-object py" id="polytorch.embedding.PolyEmbedding.forward">
 <span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.embedding.PolyEmbedding.forward" title="Link to this definition"></a></dt>
-<dd><p>Define the computation performed at every call.</p>
-<p>Should be overridden by all subclasses.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Although the recipe for forward pass needs to be defined within
-this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
-instead of this since the former takes care of running the
-registered hooks while the latter silently ignores them.</p>
-</div>
+<dd><p>Embed and sum inputs supplied in input_types order.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>*inputs</strong> – One tensor per data type, each with the same shape. Categorical
+inputs contain integer indices; Boolean inputs are converted to ints.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The summed embeddings, with embedding_size coordinates at feature_axis.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="polytorch.embedding.PolyEmbedding.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Figure</span></span></span><a class="headerlink" href="#polytorch.embedding.PolyEmbedding.plot" title="Link to this definition"></a></dt>
+<dd><p>Return a PCA plot of the embedding weights.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>**kwargs</strong> – Arguments forwarded to polytorch.plots.plot_embedding.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A Plotly figure with two or three principal components.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -308,43 +877,82 @@ registered hooks while the latter silently ignores them.</p>
 </section>
 <section id="module-polytorch.modules">
 <span id="modules"></span><h2>Modules<a class="headerlink" href="#module-polytorch.modules" title="Link to this heading"></a></h2>
+<p>Linear output layers that infer and split heterogeneous prediction widths.</p>
 <dl class="py exception">
 <dt class="sig sig-object py" id="polytorch.modules.PolyLayerError">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">polytorch.modules.</span></span><span class="sig-name descname"><span class="pre">PolyLayerError</span></span><a class="headerlink" href="#polytorch.modules.PolyLayerError" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Raised when a PolyTorch layer receives an explicit output feature count.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="polytorch.modules.PolyLayerMixin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">polytorch.modules.</span></span><span class="sig-name descname"><span class="pre">PolyLayerMixin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_types</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#polytorch.data.PolyData" title="polytorch.data.PolyData"><span class="pre">PolyData</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.modules.PolyLayerMixin" title="Link to this definition"></a></dt>
+<dd><p>Derive a linear layer width from output types and split its predictions.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="polytorch.modules.PolyLayerMixin.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.modules.PolyLayerMixin.forward" title="Link to this definition"></a></dt>
+<dd><p>Apply the linear layer and return a prediction tensor for each output type.</p>
+</dd></dl>
+
+</dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="polytorch.modules.PolyLazyLinear">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">polytorch.modules.</span></span><span class="sig-name descname"><span class="pre">PolyLazyLinear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_types</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#polytorch.data.PolyData" title="polytorch.data.PolyData"><span class="pre">PolyData</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.modules.PolyLazyLinear" title="Link to this definition"></a></dt>
 <dd><p>Creates a lazy linear layer designed to be the final layer in a neural network model that produces unnormalized scores given to PolyLoss.</p>
-<p>The <cite>out_features</cite> value is set internally from root.layer_size and cannot be given as an argument.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">out_features</span></code> value is the sum of the output data type sizes and
+cannot be supplied explicitly. Predictions are returned as a tuple in
+output_types order. Other arguments follow the underlying PyTorch layer.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="polytorch.modules.PolyLinear">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">polytorch.modules.</span></span><span class="sig-name descname"><span class="pre">PolyLinear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_types</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#polytorch.data.PolyData" title="polytorch.data.PolyData"><span class="pre">PolyData</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.modules.PolyLinear" title="Link to this definition"></a></dt>
 <dd><p>Creates a linear layer designed to be the final layer in a neural network model that produces unnormalized scores given to PolyLoss.</p>
-<p>The <cite>out_features</cite> value is set internally from root.layer_size and cannot be given as an argument.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">out_features</span></code> value is the sum of the output data type sizes and
+cannot be supplied explicitly. Predictions are returned as a tuple in
+output_types order. Other arguments follow the underlying PyTorch layer.</p>
 </dd></dl>
 
 </section>
 <section id="module-polytorch.loss">
 <span id="loss"></span><h2>Loss<a class="headerlink" href="#module-polytorch.loss" title="Link to this heading"></a></h2>
+<p>Weighted loss aggregation for models with multiple output types.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="polytorch.loss.PolyLoss">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">polytorch.loss.</span></span><span class="sig-name descname"><span class="pre">PolyLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_types</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#polytorch.data.PolyData" title="polytorch.data.PolyData"><span class="pre">PolyData</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_axis</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.loss.PolyLoss" title="Link to this definition"></a></dt>
-<dd><dl class="py method">
+<dd><p>Combine the mean losses for multiple output data types.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_types</strong> – Ordered output data types, including their loss weights.</p></li>
+<li><p><strong>feature_axis</strong> – Feature axis in prediction tensors.</p></li>
+<li><p><strong>**kwargs</strong> – Additional arguments passed to nn.Module.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
 <dt class="sig sig-object py" id="polytorch.loss.PolyLoss.forward">
 <span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predictions</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">targets</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.loss.PolyLoss.forward" title="Link to this definition"></a></dt>
-<dd><p>Define the computation performed at every call.</p>
-<p>Should be overridden by all subclasses.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Although the recipe for forward pass needs to be defined within
-this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
-instead of this since the former takes care of running the
-registered hooks while the latter silently ignores them.</p>
-</div>
+<dd><p>Return the sum of weighted mean losses for the supplied targets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>predictions</strong> – A concatenated prediction tensor or a sequence containing
+one prediction tensor per data type.</p></li>
+<li><p><strong>*targets</strong> – One target tensor per data type, in matching order.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A scalar tensor summing each mean loss times its loss_weighting.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>AssertionError</strong> – Prediction, target, and data type counts do not match.</p></li>
+<li><p><strong>ValueError</strong> – A data type does not provide calculate_loss.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -352,6 +960,156 @@ registered hooks while the latter silently ignores them.</p>
 </section>
 <section id="module-polytorch.metrics">
 <span id="metrics"></span><h2>Metrics<a class="headerlink" href="#module-polytorch.metrics" title="Link to this heading"></a></h2>
+<p>Accuracy, regression, and segmentation metrics for multiple outputs.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="polytorch.metrics.CategoricalAccuracy">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">polytorch.metrics.</span></span><span class="sig-name descname"><span class="pre">CategoricalAccuracy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_axis</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">function</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">NOTHING</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.metrics.CategoricalAccuracy" title="Link to this definition"></a></dt>
+<dd><p>Measure argmax accuracy for the configured categorical output.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="polytorch.metrics.CategoricalAccuracy.calc">
+<span class="sig-name descname"><span class="pre">calc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predictions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targets</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.metrics.CategoricalAccuracy.calc" title="Link to this definition"></a></dt>
+<dd><p>Return the fraction of class indices matching the targets.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="polytorch.metrics.HierarchicalGreedyAccuracy">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">polytorch.metrics.</span></span><span class="sig-name descname"><span class="pre">HierarchicalGreedyAccuracy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SoftmaxNode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_depth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_axis</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">function</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">NOTHING</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.metrics.HierarchicalGreedyAccuracy" title="Link to this definition"></a></dt>
+<dd><p>Measure greedy tree traversal accuracy for a hierarchical output.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="polytorch.metrics.HierarchicalGreedyAccuracy.root">
+<span class="sig-name descname"><span class="pre">root</span></span><a class="headerlink" href="#polytorch.metrics.HierarchicalGreedyAccuracy.root" title="Link to this definition"></a></dt>
+<dd><p>Softmax tree defining class relationships.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>hierarchicalsoftmax.nodes.SoftmaxNode</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="polytorch.metrics.HierarchicalGreedyAccuracy.max_depth">
+<span class="sig-name descname"><span class="pre">max_depth</span></span><a class="headerlink" href="#polytorch.metrics.HierarchicalGreedyAccuracy.max_depth" title="Link to this definition"></a></dt>
+<dd><p>Optional traversal depth limit, passed to greedy_accuracy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="polytorch.metrics.HierarchicalGreedyAccuracy.calc">
+<span class="sig-name descname"><span class="pre">calc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predictions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targets</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.metrics.HierarchicalGreedyAccuracy.calc" title="Link to this definition"></a></dt>
+<dd><p>Evaluate hierarchical greedy accuracy using the configured tree and depth.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="polytorch.metrics.PolyMetric">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">polytorch.metrics.</span></span><span class="sig-name descname"><span class="pre">PolyMetric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_axis</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">function</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">NOTHING</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.metrics.PolyMetric" title="Link to this definition"></a></dt>
+<dd><p>Wrap a metric function for one output in a multi-output model.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="polytorch.metrics.PolyMetric.data_index">
+<span class="sig-name descname"><span class="pre">data_index</span></span><a class="headerlink" href="#polytorch.metrics.PolyMetric.data_index" title="Link to this definition"></a></dt>
+<dd><p>Index of the prediction and target pair to evaluate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="polytorch.metrics.PolyMetric.feature_axis">
+<span class="sig-name descname"><span class="pre">feature_axis</span></span><a class="headerlink" href="#polytorch.metrics.PolyMetric.feature_axis" title="Link to this definition"></a></dt>
+<dd><p>Axis containing prediction features.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="polytorch.metrics.PolyMetric.function">
+<span class="sig-name descname"><span class="pre">function</span></span><a class="headerlink" href="#polytorch.metrics.PolyMetric.function" title="Link to this definition"></a></dt>
+<dd><p>Optional callable used by the default calc implementation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>callable | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="polytorch.metrics.PolyMetric.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#polytorch.metrics.PolyMetric.name" title="Link to this definition"></a></dt>
+<dd><p>Display name, defaulting to the function name or class name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="polytorch.metrics.PolyMetric.calc">
+<span class="sig-name descname"><span class="pre">calc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predictions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targets</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.metrics.PolyMetric.calc" title="Link to this definition"></a></dt>
+<dd><p>Evaluate the supplied metric function on selected tensors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>NotImplementedError</strong> – No function is supplied and calc is not overridden.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="polytorch.metrics.PolyMetric.default_name">
+<span class="sig-name descname"><span class="pre">default_name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.metrics.PolyMetric.default_name" title="Link to this definition"></a></dt>
+<dd><p>Return the supplied function name, or the concrete metric class name.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="polytorch.metrics.binary_accuracy">
+<span class="sig-prename descclassname"><span class="pre">polytorch.metrics.</span></span><span class="sig-name descname"><span class="pre">binary_accuracy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predictions</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">targets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="headerlink" href="#polytorch.metrics.binary_accuracy" title="Link to this definition"></a></dt>
+<dd><p>Return mean accuracy for the selected binary output, thresholding logits at zero.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="polytorch.metrics.binary_dice">
+<span class="sig-prename descclassname"><span class="pre">polytorch.metrics.</span></span><span class="sig-name descname"><span class="pre">binary_dice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predictions</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">targets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.metrics.binary_dice" title="Link to this definition"></a></dt>
+<dd><p>Return binary Dice for the selected output after thresholding logits at zero.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="polytorch.metrics.binary_iou">
+<span class="sig-prename descclassname"><span class="pre">polytorch.metrics.</span></span><span class="sig-name descname"><span class="pre">binary_iou</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predictions</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">targets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.metrics.binary_iou" title="Link to this definition"></a></dt>
+<dd><p>Return binary intersection-over-union for the selected output after thresholding logits at zero.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="polytorch.metrics.calc_dice_score">
+<span class="sig-prename descclassname"><span class="pre">polytorch.metrics.</span></span><span class="sig-name descname"><span class="pre">calc_dice_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predictions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="headerlink" href="#polytorch.metrics.calc_dice_score" title="Link to this definition"></a></dt>
+<dd><p>Return a smoothed binary Dice score across all tensor elements.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>predictions</strong> – Binary predictions or probabilities; values are not thresholded.</p></li>
+<li><p><strong>target</strong> – Matching binary targets.</p></li>
+<li><p><strong>smooth</strong> – Constant added to the numerator and denominator.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A scalar Dice score after flattening predictions and targets.</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="polytorch.metrics.calc_generalized_dice_score">
 <span class="sig-prename descclassname"><span class="pre">polytorch.metrics.</span></span><span class="sig-name descname"><span class="pre">calc_generalized_dice_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predictions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">power</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_axis</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="headerlink" href="#polytorch.metrics.calc_generalized_dice_score" title="Link to this definition"></a></dt>
@@ -370,9 +1128,54 @@ If power=2.0, this is equivalent to ‘inverse volume’ weighting.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="polytorch.metrics.calc_iou">
+<span class="sig-prename descclassname"><span class="pre">polytorch.metrics.</span></span><span class="sig-name descname"><span class="pre">calc_iou</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predictions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.metrics.calc_iou" title="Link to this definition"></a></dt>
+<dd><p>Return smoothed intersection-over-union across all tensor elements.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>predictions</strong> – Binary predictions or probabilities; values are not thresholded.</p></li>
+<li><p><strong>target</strong> – Matching binary targets.</p></li>
+<li><p><strong>smooth</strong> – Constant added to the intersection and union.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A scalar score after flattening predictions and targets.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="polytorch.metrics.categorical_accuracy">
+<span class="sig-prename descclassname"><span class="pre">polytorch.metrics.</span></span><span class="sig-name descname"><span class="pre">categorical_accuracy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predictions</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">targets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="headerlink" href="#polytorch.metrics.categorical_accuracy" title="Link to this definition"></a></dt>
+<dd><p>Return mean argmax accuracy for the output selected by data_index.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="polytorch.metrics.function_metric">
+<span class="sig-prename descclassname"><span class="pre">polytorch.metrics.</span></span><span class="sig-name descname"><span class="pre">function_metric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predictions</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">targets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">function</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="headerlink" href="#polytorch.metrics.function_metric" title="Link to this definition"></a></dt>
+<dd><p>Apply a function to a selected prediction and target pair.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>predictions</strong> – A prediction tensor or sequence of per-output tensors.</p></li>
+<li><p><strong>*targets</strong> – Target tensors in matching output order.</p></li>
+<li><p><strong>data_index</strong> – Required index of the output to evaluate.</p></li>
+<li><p><strong>feature_axis</strong> – Feature axis to squeeze if predictions have a singleton
+feature dimension absent from the targets.</p></li>
+<li><p><strong>function</strong> – Callable accepting the selected prediction and target tensors.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The result of calling function on the selected tensors.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="polytorch.metrics.generalized_dice">
 <span class="sig-prename descclassname"><span class="pre">polytorch.metrics.</span></span><span class="sig-name descname"><span class="pre">generalized_dice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predictions</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">targets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">perform_softmax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">power</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2.0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="headerlink" href="#polytorch.metrics.generalized_dice" title="Link to this definition"></a></dt>
-<dd><p>Calculate the generalized dice score for a single data index. Used for for multi-class segmentation.</p>
+<dd><p>Calculate generalized Dice for one output in multi-class segmentation.</p>
 <dl class="simple">
 <dt>See:</dt><dd><ul class="simple">
 <li><p><a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S2590005619300049#bib73">https://www.sciencedirect.com/science/article/pii/S2590005619300049#bib73</a></p></li>
@@ -384,9 +1187,11 @@ If power=2.0, this is equivalent to ‘inverse volume’ weighting.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>predictions</strong> (<em>_type_</em>) – Logits or probabilities. If probabilities, perform_softmax must be False.</p></li>
-<li><p><strong>data_index</strong> (<em>_type_</em><em>, </em><em>optional</em>) – The index of the target to . Defaults to None.</p></li>
-<li><p><strong>feature_axis</strong> (<em>int</em><em>, </em><em>optional</em>) – _description_. Defaults to -1.</p></li>
+<li><p><strong>predictions</strong> – A prediction tensor or sequence of per-output tensors.
+Values are logits, or probabilities when perform_softmax is False.</p></li>
+<li><p><strong>*targets</strong> – Integer class-index target tensors in matching output order.</p></li>
+<li><p><strong>data_index</strong> (<em>int</em>) – Required index of the output to evaluate.</p></li>
+<li><p><strong>feature_axis</strong> (<em>int</em><em>, </em><em>optional</em>) – Axis containing class scores. Defaults to -1.</p></li>
 <li><p><strong>perform_softmax</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether or not to normalize the predictions using the softmax function. Defaults to True.</p></li>
 <li><p><strong>power</strong> (<em>float</em><em>, </em><em>optional</em>) – The power to use for the generalized dice score. Defaults to 2.0 (i.e. inverse volume weighting)
 If power=0.0, this is equivalent to normal Dice score (i.e. volume “implicit” weighting)
@@ -403,9 +1208,53 @@ If power=2.0, this is equivalent to ‘inverse volume’ weighting.</p></li>
 </dl>
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="polytorch.metrics.get_predictions_target_for_index">
+<span class="sig-prename descclassname"><span class="pre">polytorch.metrics.</span></span><span class="sig-name descname"><span class="pre">get_predictions_target_for_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predictions</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">targets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.metrics.get_predictions_target_for_index" title="Link to this definition"></a></dt>
+<dd><p>Select a prediction tensor and matching target for one output.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>predictions</strong> – A tensor for one output or a sequence of prediction tensors.</p></li>
+<li><p><strong>*targets</strong> – Matching target tensors, one per output.</p></li>
+<li><p><strong>data_index</strong> – Required nonnegative index of the output to select.</p></li>
+<li><p><strong>feature_axis</strong> – Accepted for consistency with metric functions; unused here.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A pair containing the selected prediction and target tensors.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>AssertionError</strong> – Counts differ or data_index is missing or negative.</p></li>
+<li><p><strong>IndexError</strong> – data_index is outside the sequence.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="polytorch.metrics.l1">
+<span class="sig-prename descclassname"><span class="pre">polytorch.metrics.</span></span><span class="sig-name descname"><span class="pre">l1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predictions</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">targets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="headerlink" href="#polytorch.metrics.l1" title="Link to this definition"></a></dt>
+<dd><p>Return mean absolute error for the output selected by data_index.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="polytorch.metrics.mse">
+<span class="sig-prename descclassname"><span class="pre">polytorch.metrics.</span></span><span class="sig-name descname"><span class="pre">mse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predictions</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">targets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="headerlink" href="#polytorch.metrics.mse" title="Link to this definition"></a></dt>
+<dd><p>Return mean squared error for the output selected by data_index.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="polytorch.metrics.smooth_l1">
+<span class="sig-prename descclassname"><span class="pre">polytorch.metrics.</span></span><span class="sig-name descname"><span class="pre">smooth_l1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predictions</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">targets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="headerlink" href="#polytorch.metrics.smooth_l1" title="Link to this definition"></a></dt>
+<dd><p>Return mean smooth L1 loss for the output selected by data_index.</p>
+</dd></dl>
+
 </section>
 <section id="module-polytorch.plots">
 <span id="plots"></span><h2>Plots<a class="headerlink" href="#module-polytorch.plots" title="Link to this heading"></a></h2>
+<p>Plotly visualizations of learned embedding weights.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="polytorch.plots.format_fig">
 <span class="sig-prename descclassname"><span class="pre">polytorch.plots.</span></span><span class="sig-name descname"><span class="pre">format_fig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fig</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Figure</span></span></span><a class="headerlink" href="#polytorch.plots.format_fig" title="Link to this definition"></a></dt>
@@ -438,6 +1287,7 @@ Can be in HTML, PNG, JPEG, SVG or PDF. Defaults to None.</p></li>
 </section>
 <section id="module-polytorch.util">
 <span id="util"></span><h2>Util<a class="headerlink" href="#module-polytorch.util" title="Link to this heading"></a></h2>
+<p>Tensor shape and prediction partitioning helpers.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="polytorch.util.permute_feature_axis">
 <span class="sig-prename descclassname"><span class="pre">polytorch.util.</span></span><span class="sig-name descname"><span class="pre">permute_feature_axis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">old_axis</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_axis</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="headerlink" href="#polytorch.util.permute_feature_axis" title="Link to this definition"></a></dt>
@@ -446,6 +1296,7 @@ Can be in HTML, PNG, JPEG, SVG or PDF. Defaults to None.</p></li>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>tensor</strong> (<em>torch.Tensor</em>) – The tensor to permute.</p></li>
+<li><p><strong>old_axis</strong> (<em>int</em>) – The current index of the feature axis.</p></li>
 <li><p><strong>new_axis</strong> (<em>int</em>) – The desired index of the feature axis.</p></li>
 </ul>
 </dd>
@@ -482,7 +1333,18 @@ Can be in HTML, PNG, JPEG, SVG or PDF. Defaults to None.</p></li>
 <dl class="py function">
 <dt class="sig sig-object py" id="polytorch.util.squeeze_prediction">
 <span class="sig-prename descclassname"><span class="pre">polytorch.util.</span></span><span class="sig-name descname"><span class="pre">squeeze_prediction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prediction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_axis</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polytorch.util.squeeze_prediction" title="Link to this definition"></a></dt>
-<dd><p>Squeeze feature axis if necessary</p>
+<dd><p>Remove a redundant singleton prediction feature axis when shapes match.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Args:</dt><dd><p>prediction: Prediction tensor, possibly with one extra dimension.
+target: Target tensor used to determine the required shape.
+feature_axis: Axis to squeeze when it is the only extra dimension.</p>
+</dd>
+<dt>Returns:</dt><dd><p>The squeezed prediction tensor, or the original tensor if its shape
+does not satisfy the matching condition.</p>
+</dd>
+</dl>
+</div></blockquote>
 </dd></dl>
 
 <dl class="py function">
