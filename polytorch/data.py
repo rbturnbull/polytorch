@@ -12,7 +12,7 @@ from .enums import ContinuousLossType, BinaryLossType, CategoricalLossType
 class Getter(Protocol):
     def __getitem__(self, key: int) -> Any: ...
 
-DELIMITER = "→"
+DELIMITER = "/"
 
 @define(kw_only=True)
 class PolyData(abc.ABC):

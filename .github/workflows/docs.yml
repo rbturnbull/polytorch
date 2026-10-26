@@ -21,31 +21,33 @@ jobs:
       matrix:
         python-version: ["3.11"]
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
     - name: Install poetry
       run: pipx install poetry
     - name: Install dependencies for Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v7
       with:
         python-version: ${{ matrix.python-version }}
         cache: 'poetry'
     - run: poetry install
     - name: Docs
       run: |
-        poetry run sphinx-build -b html docs gh-pages
+        poetry run sphinx-build -W --keep-going -b html docs gh-pages
+    - name: Install Chrome for image export
+      run: poetry run plotly_get_chrome -y
     - name: Coverage
       run: |
         poetry run coverage run -m pytest
         echo "COVERAGE=$(poetry run coverage report --precision 2 | grep TOTAL | tr -s ' ' | cut -f 4 -d " ")" >> $GITHUB_ENV
         poetry run coverage html --directory gh-pages/coverage
     - name: Deploy 🚀
-      uses: JamesIves/github-pages-deploy-action@v4
+      uses: JamesIves/github-pages-deploy-action@v4.9.0
       with:
         branch: gh-pages # The branch the action should deploy to.
         folder: gh-pages # The folder the action should deploy.
     
     - name: Create Coverage Badge
-      uses: schneegans/dynamic-badges-action@v1.1.0
+      uses: schneegans/dynamic-badges-action@v1.9.0
       with:
         auth: ${{ secrets.GIST_SECRET }}
         gistID: f84ac74436887cd42d77fbe2246d1f57
@@ -53,4 +55,3 @@ jobs:
         label: coverage
         message: ${{ env.COVERAGE }}
         color: green
-    

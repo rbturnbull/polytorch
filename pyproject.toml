@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "PolyTorch"
-version = "0.2.0"
+version = "0.2.2"
 description = "Embeddings and loss functions for different data types."
 authors = ["Robert Turnbull <robert.turnbull@unimelb.edu.au>"]
 license = "Apache-2.0"
@@ -20,9 +20,9 @@ classifiers = [
 [tool.poetry.dependencies]
 python = ">=3.10,<4.0"
 torch = ">=1.10.2"
-plotly = ">=5.15.0"
+plotly = ">=6.1.1"
 scikit-learn = ">=1.0.2"
-kaleido = "=0.2.1"
+kaleido = ">=1.0.0,<2"
 attrs = ">=19"
 hierarchicalsoftmax = ">=1.4.1"
 pandas = "^2.3.3"

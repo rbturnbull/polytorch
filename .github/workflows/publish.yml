@@ -8,22 +8,29 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           submodules: recursive  # Ensure submodules are checked out
       - name: Install poetry
         run: pipx install poetry
       - name: Install dependencies
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
-          python-version: 3.11
+          python-version: "3.11"
           cache: 'poetry'
       - run: poetry install
+      - name: Check release version
+        run: test "$GITHUB_REF_NAME" = "v$(poetry version -s)"
+      - name: Install Chrome for image export
+        run: poetry run plotly_get_chrome -y
+      - name: Validate release
+        run: |
+          poetry check --lock
+          poetry run pytest
+          poetry run sphinx-build -W --keep-going -b html docs docs/_build/html
       - name: Build library
         run: poetry build
       - name: Publish library
         env:
-          PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
-        run: |
-          poetry config pypi-token.pypi $PYPI_TOKEN
-          poetry publish
+          POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_TOKEN }}
+        run: poetry publish

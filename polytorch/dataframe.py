@@ -5,8 +5,10 @@ from pathlib import Path
 from . import data as data_module
 
 class PolyDataFrame:
-    def __init__(self, csv:Path|pd.DataFrame):
+    def __init__(self, csv:Path|pd.DataFrame, data_columns:set[str]|None=None):
         self.pandas_df = pd.read_csv(csv) if isinstance(csv, Path) else csv
+
+        data_columns = set(data_columns) if data_columns else None
 
         self.data_types = []
         self.getters = {}
@@ -18,6 +20,9 @@ class PolyDataFrame:
                 
                 name = name.strip()
                 
+                if data_columns and name not in data_columns:
+                    continue
+
                 # Make first letter uppercase to match class names
                 type_str = type_str.strip()
                 type_str = type_str[0].upper() + type_str[1:]
@@ -33,6 +38,11 @@ class PolyDataFrame:
                 self.data_types.append(data_type)
                 self.getters[name] = getter
 
+        if data_columns:
+            missing_columns = data_columns - set(self.getters)
+            if missing_columns:
+                raise ValueError(f"Missing columns from dataframe: {', '.join(missing_columns)}")
+            
     def __len__(self):
         return len(self.pandas_df)
     
