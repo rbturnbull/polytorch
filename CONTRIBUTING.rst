@@ -63,17 +63,17 @@ Other information for using reStructuredText in Sphinx can be found here: https:
 Preparing a release
 ==================
 
-Install the development environment with ``poetry install``. Static image
+Install the development environment with ``uv sync``. Static image
 export tests require Chrome or Chromium; install a compatible browser with
-``poetry run plotly_get_chrome`` if necessary.
+``uv run plotly_get_chrome`` if necessary.
 
 Before tagging a release:
 
 - Update the version in ``pyproject.toml`` and prepare GitHub release notes,
   including changes to dependencies and hierarchy path parsing.
-- Run ``poetry check --lock`` and ``poetry run pytest``.
-- Build the docs with ``poetry run sphinx-build -W --keep-going -b html docs docs/_build/html``.
-- Run ``poetry build`` and check the wheel and source distribution metadata
+- Run ``uv lock --check`` and ``uv run pytest``.
+- Build the docs with ``uv run sphinx-build -W --keep-going -b html docs docs/_build/html``.
+- Run ``uv build`` and check the wheel and source distribution metadata
   with ``pipx run twine check dist/*``.
 - Wait for GitHub Actions checks to pass and verify that the repository's
   ``PYPI_TOKEN`` secret is configured for publishing.

@@ -38,7 +38,7 @@ def test_plot_embedding_2d():
         assert output_path.exists()
         assert "<html>" in output_path.read_text()
 
-    # todo poetry add kaleido
+    # todo uv add kaleido
     with NamedTemporaryFile(suffix=".jpg") as tmp:
         plot_embedding(embedding, n_components=2, output_path=tmp.name)
         assert Path(tmp.name).exists()

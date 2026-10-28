@@ -7,13 +7,13 @@ docs:
   image: python:3.8-slim-buster
   before_script:
     - apt-get update && apt-get install -y build-essential git pandoc
-    - pip install poetry
-    - poetry install
+    - pip install uv
+    - uv sync --locked
   script:
-    - poetry run coverage run -m pytest
-    - poetry run coverage html
-    - poetry run sphinx-build -b html docs docshtml
-    - poetry run coverage report    
+    - uv run coverage run -m pytest
+    - uv run coverage html
+    - uv run sphinx-build -b html docs docshtml
+    - uv run coverage report    
   artifacts:
     paths:
       - docshtml/
